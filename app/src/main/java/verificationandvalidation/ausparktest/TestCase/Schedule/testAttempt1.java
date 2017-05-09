@@ -1,4 +1,4 @@
-package verificationandvalidation.ausparktest;
+package verificationandvalidation.ausparktest.TestCase.Schedule;
 
 import org.junit.Before;
 import org.junit.Test;
