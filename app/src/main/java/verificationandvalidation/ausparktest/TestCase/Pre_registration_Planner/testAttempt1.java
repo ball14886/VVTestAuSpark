@@ -1,4 +1,4 @@
-package verificationandvalidation.ausparktest;
+package verificationandvalidation.ausparktest.TestCase.Pre_registration_Planner;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -66,7 +66,7 @@ public class testAttempt1 {
         TouchAction tapCoordinates = new TouchAction(driver); //where driver is AppiumDriver
         tapCoordinates.tap(50,180).perform();
 
-        driver.findElements(By.id("edu.au.auspark:id/toolbar")).
+
 
     }
 
