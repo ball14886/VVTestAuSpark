@@ -2,6 +2,7 @@ package verificationandvalidation.ausparktest;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,9 +28,7 @@ public class Login {
     }
     @Test
     public void testLogin(){
-
-
-
+        driver.findElement(By.id("edu.au.auspark:id/btnLogin")).isEnabled();
     }
 
     public void tearDown(){
