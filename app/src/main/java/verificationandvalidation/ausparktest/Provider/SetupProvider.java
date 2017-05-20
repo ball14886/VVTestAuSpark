@@ -12,24 +12,16 @@ import java.net.MalformedURLException;
  */
 public class SetupProvider {
     public DesiredCapabilities GetDesiredCapabilities() throws MalformedURLException {
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
-
         capabilities.setCapability("platformName", "Android");
-
         capabilities.setCapability("deviceName", "Nexus5X");
-
         capabilities.setCapability(CapabilityType.BROWSER_NAME, "Android");
-
         capabilities.setCapability(CapabilityType.VERSION, "6.0");
-
         capabilities.setCapability("appPackage", "edu.au.auspark");
-
         capabilities.setCapability("appActivity","edu.au.auspark.SplashScreen");
 
         return capabilities;
     }
-
     public String GetAndroidDriverURL(){
         return "http://127.0.0.1:4723/wd/hub";
     }

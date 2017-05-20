@@ -13,12 +13,7 @@ public class SecurityProvider {
     GeneralProvider generalProvider = new GeneralProvider();
 
     public Boolean isAuthorization(AppiumDriver driver){
-
         Boolean isLogin = generalProvider.existsElementByID(driver, "edu.au.auspark:id/edtID");
-
         return !isLogin;
     }
-
-
-
 }

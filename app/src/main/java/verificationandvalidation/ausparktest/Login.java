@@ -23,16 +23,16 @@ public class Login {
 
     @Before
     public void setUp() throws MalformedURLException{
-        driver = new AndroidDriver(new URL(setupProvider.GetAndroidDriverURL()),setupProvider.GetDesiredCapabilities());
+        driver = new AndroidDriver(new URL(
+                setupProvider.GetAndroidDriverURL()),
+                setupProvider.GetDesiredCapabilities());
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
     @Test
     public void testLogin(){
-        driver.findElement(By.id("edu.au.auspark:id/btnLogin")).isEnabled();
-    }
 
+    }
     public void tearDown(){
         driver.quit();
     }
-
 }

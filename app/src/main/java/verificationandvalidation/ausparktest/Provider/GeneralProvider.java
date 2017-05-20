@@ -37,9 +37,23 @@ public class GeneralProvider {
         actionProvider.SwipeVertical(driver,0.1,0.9,0.5,500);
     }
 
+    public void ScrollTopToDown_ScreenOne(AppiumDriver driver) throws Exception
+    {
+        actionProvider.SwipeVertical(driver,0.9,0.25,0.99,1500);
+    }
+
     public boolean existsElementByID(AppiumDriver driver, String id) {
         try {
             driver.findElement(By.id(id));
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean existsElement_and_ElementByID(MobileElement element, String id) {
+        try {
+            element.findElement(By.id(id));
         } catch (NoSuchElementException e) {
             return false;
         }
@@ -65,7 +79,8 @@ public class GeneralProvider {
 
     public List<MobileElement> getElementByClassName(AppiumDriver driver, String byClassName){
         if (existsElementByClass(driver, byClassName)) {
-            List<MobileElement> elementList = (List<MobileElement>) driver.findElement(By.className(byClassName));
+            List<MobileElement> elementList = (List<MobileElement>)
+                    driver.findElement(By.className(byClassName));
             return elementList;
         }
         return null;
@@ -79,6 +94,60 @@ public class GeneralProvider {
         return one.trim().toLowerCase().equals(two.trim().toLowerCase());
     }
 
+    //------------------------------------------------------------------------------------
 
+    public String GetText_ElementByID(AppiumDriver driver,String id) throws Exception { // Check existsElementByID if not scroll down
+        GeneralProvider generalProvider = new GeneralProvider();
+
+        if (generalProvider.existsElementByID(driver, id)){
+            return generalProvider.getElementByID(driver, id).getText();
+        }
+        else {
+            ScrollToTargetValue_ElementByID(driver, id);
+        }
+        return "";
+    }
+
+    public String GetText_ElementByID(AppiumDriver driver,MobileElement element ,String id) throws Exception { // Check existsElementByID if not scroll down
+        GeneralProvider generalProvider = new GeneralProvider();
+
+        if (generalProvider.existsElement_and_ElementByID(element, id)){
+            return element.findElement(By.id(id)).getText();
+        }
+        else {
+            ScrollToTargetValue_ElementByID(driver, element, id);
+        }
+        return "";
+    }
+
+    public void ScrollToTargetValue_ElementByID(AppiumDriver driver, String id) throws Exception {
+        System.out.println("ScrollToTargetValue_ElementByID(id)");
+        GeneralProvider generalProvider = new GeneralProvider();
+
+        Boolean isFound = false;
+        while (!isFound){
+            if (!generalProvider.existsElementByID(driver, id)){ // not found
+                generalProvider.ScrollTopToDown_ScreenOne(driver);
+            }
+            else {
+                isFound = true;
+            }
+        }
+    }
+
+    public void ScrollToTargetValue_ElementByID(AppiumDriver driver, MobileElement element,String id) throws Exception {
+        System.out.println("ScrollToTargetValue_ElementByID(element,id)");
+        GeneralProvider generalProvider = new GeneralProvider();
+
+        Boolean isFound = false;
+        while (!isFound){
+            if (!generalProvider.existsElement_and_ElementByID(element, id)){ // not found
+                generalProvider.ScrollTopToDown_ScreenOne(driver);
+            }
+            else {
+                isFound = true;
+            }
+        }
+    }
 
 }

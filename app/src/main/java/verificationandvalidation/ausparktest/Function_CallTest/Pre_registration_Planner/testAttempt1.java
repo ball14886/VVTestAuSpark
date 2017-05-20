@@ -1,4 +1,4 @@
-package verificationandvalidation.ausparktest.TestCase.Advisor;
+package verificationandvalidation.ausparktest.Function_CallTest.Pre_registration_Planner;
 
 import org.junit.Before;
 import org.junit.Test;

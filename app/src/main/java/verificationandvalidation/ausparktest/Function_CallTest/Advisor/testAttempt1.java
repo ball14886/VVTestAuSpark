@@ -1,4 +1,4 @@
-package verificationandvalidation.ausparktest.TestCase.Schedule;
+package verificationandvalidation.ausparktest.Function_CallTest.Advisor;
 
 import org.junit.Before;
 import org.junit.Test;

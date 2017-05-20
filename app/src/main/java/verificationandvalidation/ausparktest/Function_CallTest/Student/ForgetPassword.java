@@ -1,4 +1,4 @@
-package verificationandvalidation.ausparktest.TestCase.Student;
+package verificationandvalidation.ausparktest.Function_CallTest.Student;
 
 import org.junit.Before;
 import org.junit.Test;
