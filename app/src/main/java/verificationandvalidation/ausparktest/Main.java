@@ -1,5 +1,6 @@
 package verificationandvalidation.ausparktest;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,8 +11,7 @@ import java.util.concurrent.TimeUnit;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import verificationandvalidation.ausparktest.Function_CallTest.Academic_Record.Test_GradeList;
-import verificationandvalidation.ausparktest.Function_CallTest.Student.Test_Login;
-import verificationandvalidation.ausparktest.Provider.GeneralProvider;
+import verificationandvalidation.ausparktest.Function_CallTest.Student.T1_01_Login;
 import verificationandvalidation.ausparktest.Provider.SecurityProvider;
 import verificationandvalidation.ausparktest.Provider.SetupProvider;
 
@@ -26,18 +26,18 @@ public class Main {
 
     @Before
     public void setUp() throws MalformedURLException {
-        driver = new AndroidDriver(new URL(setupProvider.GetAndroidDriverURL()),setupProvider.GetDesiredCapabilities());
+        driver = new AndroidDriver(new URL(
+                setupProvider.GetAndroidDriverURL()),
+                setupProvider.GetDesiredCapabilities());
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 
     @Test
     public void RunTest() throws Exception {
         if (!securityProvider.isAuthorization(driver)){
-            Test_Login loginTest = new Test_Login();
+            T1_01_Login loginTest = new T1_01_Login();
             loginTest.testLogin(driver);
         }
-
-
         AcademicRecord_Test();
     }
 
@@ -54,6 +54,7 @@ public class Main {
 
     }
 
+    @After
     public void tearDown(){
         driver.quit();
     }

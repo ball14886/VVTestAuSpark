@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
  */
 public class SetupProvider {
     public DesiredCapabilities GetDesiredCapabilities() throws MalformedURLException {
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "Nexus5X");
