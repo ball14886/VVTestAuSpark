@@ -1,4 +1,4 @@
-package verificationandvalidation.ausparktest.TestCase.Academic_Record;
+package verificationandvalidation.ausparktest.Function_CallTest.Schedule;
 
 import org.junit.Before;
 import org.junit.Test;

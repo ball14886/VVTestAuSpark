@@ -1,4 +1,4 @@
-package verificationandvalidation.ausparktest.TestCase.Other_Settings;
+package verificationandvalidation.ausparktest.Function_CallTest.Other_Settings;
 
 import org.junit.Before;
 import org.junit.Test;

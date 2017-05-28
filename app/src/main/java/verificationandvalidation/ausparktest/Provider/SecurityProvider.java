@@ -1,7 +1,5 @@
 package verificationandvalidation.ausparktest.Provider;
 
-import org.openqa.selenium.By;
-
 import io.appium.java_client.AppiumDriver;
 
 /**
@@ -10,15 +8,7 @@ import io.appium.java_client.AppiumDriver;
 
 public class SecurityProvider {
 
-    GeneralProvider generalProvider = new GeneralProvider();
-
-    public Boolean isAuthorization(AppiumDriver driver){
-
-        Boolean isLogin = generalProvider.existsElementByID(driver, "edu.au.auspark:id/edtID");
-
-        return !isLogin;
-    }
-
+    Functions mFunctions = new Functions();
 
 
 }
