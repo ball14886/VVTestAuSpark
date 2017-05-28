@@ -2,6 +2,7 @@ package verificationandvalidation.ausparktest.TestCase.Student;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -26,9 +27,21 @@ public class ForgetPassword {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
     @Test
-    public void testLogin(){
+    public void ForgetPassword() throws InterruptedException {
 
-      
+        driver.findElement(By.id("edu.au.auspark:id/forgetPassword")).click();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        Thread.sleep(2000);
+
+        driver.findElement(By.id("edu.au.auspark:id/forget_password_studentcode")).sendKeys("5610189");
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        driver.findElement(By.id("edu.au.auspark:id/forget_password_email")).sendKeys("ball148862@hotmail.com");
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
+        driver.findElement(By.id("edu.au.auspark:id/button1")).click();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 
     }
 
