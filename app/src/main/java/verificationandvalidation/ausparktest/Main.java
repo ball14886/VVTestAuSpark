@@ -12,6 +12,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import verificationandvalidation.ausparktest.Function_CallTest.Academic_Record.Test_GradeList;
 import verificationandvalidation.ausparktest.Function_CallTest.Student.T1_01_Login;
+import verificationandvalidation.ausparktest.Provider.Functions;
 import verificationandvalidation.ausparktest.Provider.SecurityProvider;
 import verificationandvalidation.ausparktest.Provider.SetupProvider;
 
@@ -23,6 +24,7 @@ public class Main {
     AppiumDriver driver;
     SetupProvider setupProvider = new SetupProvider();
     SecurityProvider securityProvider = new SecurityProvider();
+    Functions function = new Functions();
 
     @Before
     public void setUp() throws MalformedURLException {
@@ -34,10 +36,12 @@ public class Main {
 
     @Test
     public void RunTest() throws Exception {
-//        if (!securityProvider.isAuthorization(driver)){
-//            T1_01_Login loginTest = new T1_01_Login();
-//            loginTest.testLogin(driver);
-//        }
+
+        if (!function.isAuthorization(driver)){
+            T1_01_Login loginTest = new T1_01_Login();
+            loginTest.testLogin(driver);
+        }
+
         AcademicRecord_Test();
     }
 
