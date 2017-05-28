@@ -3,51 +3,23 @@ package verificationandvalidation.ausparktest.Function_CallTest.Academic_Record;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import verificationandvalidation.ausparktest.Provider.Functions;
-import verificationandvalidation.ausparktest.Provider.SecurityProvider;
-import verificationandvalidation.ausparktest.Provider.SetupProvider;
 
 /**
- * Created by USER on 5/5/2017.
+ * Created by supanattechasothon on 5/27/2017 AD.
  */
 
-public class Test_GradeList {
+public class T3_01_GradeList {
 
     Functions func = new Functions();
 
     @Test
-    public void Test_GradeLista(AppiumDriver driver) throws Exception {
-
-        MobileElement box_frame_GradeSemesterList = func.getElementByID(
-                driver,
-                "edu.au.auspark:id/academicSwipeRefresh");
-        List<MobileElement> frame_GradeSemesterList =
-                box_frame_GradeSemesterList.findElements(By.className("android.widget.FrameLayout"));
-
-        for (MobileElement frame_GradeSemester: frame_GradeSemesterList) {
-            String GPA = func.GetText_ElementByID(
-                    driver,
-                    frame_GradeSemester,
-                    "edu.au.auspark:id/Academic_Grade");
-
-            Assert.assertTrue(func.stringComparision("3.01",GPA));
-
-
-            System.out.println("GPA: " + GPA);
-            driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-        }
-
-    }
-
-    @Test
-    public void T3_01_01_GradeList(AppiumDriver driver) throws Exception {
+    public void Test_T3_01_01(AppiumDriver driver) throws Exception {
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 
@@ -78,10 +50,5 @@ public class Test_GradeList {
         }
 
     }
-
-
-
-
-
 
 }

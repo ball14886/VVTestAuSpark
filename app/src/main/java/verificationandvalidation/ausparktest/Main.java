@@ -34,16 +34,16 @@ public class Main {
 
     @Test
     public void RunTest() throws Exception {
-        if (!securityProvider.isAuthorization(driver)){
-            T1_01_Login loginTest = new T1_01_Login();
-            loginTest.testLogin(driver);
-        }
+//        if (!securityProvider.isAuthorization(driver)){
+//            T1_01_Login loginTest = new T1_01_Login();
+//            loginTest.testLogin(driver);
+//        }
         AcademicRecord_Test();
     }
 
     public void AcademicRecord_Test() throws Exception {
         Test_GradeList gradeListTest = new Test_GradeList();
-        gradeListTest.Test_GradeList(driver);
+        gradeListTest.Test_GradeLista(driver);
     }
 
     public void ClassSchedule_Test(){
