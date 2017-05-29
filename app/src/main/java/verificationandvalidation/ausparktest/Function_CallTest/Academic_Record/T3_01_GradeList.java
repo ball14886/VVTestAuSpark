@@ -30,20 +30,20 @@ public class T3_01_GradeList {
         List<MobileElement> container_GradeSemesterList = container_frame_GradeSemesterList.findElements(By.className("android.widget.FrameLayout"));
 
         for (MobileElement container_GradeSemester : container_GradeSemesterList){
-            String semesterYear = func.GetText_ElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Semester");
-            String GPA = func.GetText_ElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Grade");
-            String credit = func.GetText_ElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Credit");
+            String semesterYear = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Semester").getText();
+            String GPA = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Grade").getText();
+            String credit = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Credit").getText();
 
             MobileElement container_gradeList = container_GradeSemester.findElement(By.id("edu.au.auspark:id/AcademicDetailHolder"));
             List<MobileElement> gradeList = container_gradeList.findElements(By.className("android.widget.FrameLayout"));
             for (MobileElement courseGrade : gradeList){
-                String courseCode = func.GetText_ElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Course_ID");
+                String courseCode = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Course_ID").getText();
                 Assert.assertTrue(func.stringComparision("*********",GPA));
 
-                String courseName = func.GetText_ElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Subject");
+                String courseName = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Subject").getText();
                 Assert.assertTrue(func.stringComparision("*********",GPA));
 
-                String grade = func.GetText_ElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Sub_Grade");
+                String grade = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Sub_Grade").getText();
                 Assert.assertTrue(func.stringComparision("*********",GPA));
 
             }

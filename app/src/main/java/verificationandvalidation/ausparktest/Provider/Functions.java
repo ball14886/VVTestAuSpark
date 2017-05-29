@@ -58,13 +58,13 @@ public class Functions {
         return true;
     }
 
-    public MobileElement getElementByID(AppiumDriver driver, String byID){
-        if (existsElementByID(driver, byID)) {
-            MobileElement element = (MobileElement) driver.findElement(By.id(byID));
-            return element;
-        }
-        return null;
-    }
+//    public MobileElement getElementByID(AppiumDriver driver, String byID){
+//        if (existsElementByID(driver, byID)) {
+//            MobileElement element = (MobileElement) driver.findElement(By.id(byID));
+//            return element;
+//        }
+//        return null;
+//    }
 
     public List<MobileElement> getElementByClassName(AppiumDriver driver, String byClassName){
         if (existsElementByClass(driver, byClassName)) {
@@ -105,28 +105,24 @@ public class Functions {
 
     //------------------------------ Find Text + Auto Scroll -------------------------------------------------
 
-    public String GetText_ElementByID(AppiumDriver driver,String id) throws Exception { // Check existsElementByID if not scroll down
-        Functions generalProvider = new Functions();
-
-        if (generalProvider.existsElementByID(driver, id)){
-            return generalProvider.getElementByID(driver, id).getText();
+    public MobileElement getElementByID(AppiumDriver driver, String id) throws Exception { // Check existsElementByID if not scroll down
+        if (existsElementByID(driver, id)){
+            return (MobileElement) driver.findElement(By.id(id));
         }
         else {
             ScrollToTargetValue_ElementByID(driver, id);
         }
-        return "";
+        return null;
     }
 
-    public String GetText_ElementByID(AppiumDriver driver,MobileElement element ,String id) throws Exception { // Check existsElementByID if not scroll down
-        Functions generalProvider = new Functions();
-
-        if (generalProvider.existsElement_and_ElementByID(element, id)){
-            return element.findElement(By.id(id)).getText();
+    public MobileElement getElementByID(AppiumDriver driver, MobileElement element , String id) throws Exception { // Check existsElementByID if not scroll down
+        if (existsElement_and_ElementByID(element, id)){
+            return element.findElement(By.id(id));
         }
         else {
             ScrollToTargetValue_ElementByID(driver, element, id);
         }
-        return "";
+        return null;
     }
 
     public void ScrollToTargetValue_ElementByID(AppiumDriver driver, String id) throws Exception {

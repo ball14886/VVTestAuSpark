@@ -33,13 +33,13 @@ public class T2_02_AdvisorInformation {
         List<MobileElement> advisingCourseList = container_advisingCourse.findElements(By.className("android.widget.RelativeLayout"));
 
         for (MobileElement advisingCourse : advisingCourseList){
-            String courseID = func.GetText_ElementByID(driver, advisingCourse, "edu.au.auspark:id/courseID");
+            String courseID = func.getElementByID(driver, advisingCourse, "edu.au.auspark:id/courseID");
             Assert.assertTrue(func.stringComparision(courseID,""));  // *****
 
-            String courseName = func.GetText_ElementByID(driver, advisingCourse, "edu.au.auspark:id/subject");
+            String courseName = func.getElementByID(driver, advisingCourse, "edu.au.auspark:id/subject");
             Assert.assertTrue(func.stringComparision(courseName,""));  // *****
 
-            String status = func.GetText_ElementByID(driver, advisingCourse, "edu.au.auspark:id/statusDescription");
+            String status = func.getElementByID(driver, advisingCourse, "edu.au.auspark:id/statusDescription");
             Assert.assertTrue(func.stringComparision(status,""));  // *****
 
         }

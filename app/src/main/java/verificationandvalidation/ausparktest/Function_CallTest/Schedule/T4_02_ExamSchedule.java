@@ -33,26 +33,26 @@ public class T4_02_ExamSchedule {
         List<MobileElement> examSchedule_courseList = container_examSchedule.findElements(By.className("android.widget.LinearLayout"));
 
         for (MobileElement course : examSchedule_courseList){
-            String examDate = func.GetText_ElementByID(driver, course, "edu.au.auspark:id/examDate");
+            String examDate = func.getElementByID(driver, course, "edu.au.auspark:id/examDate");
             Assert.assertTrue(func.stringComparision(examDate,""));  // *****
 
-            String examDayName = func.GetText_ElementByID(driver, course, "edu.au.auspark:id/examDayName");
+            String examDayName = func.getElementByID(driver, course, "edu.au.auspark:id/examDayName");
             Assert.assertTrue(func.stringComparision(examDayName,""));  // *****
 
             MobileElement container_sectionClass = course.findElement(By.id("edu.au.auspark:id/examListDetail"));
             List<MobileElement> sectionClassList = container_sectionClass.findElements(By.className("android.widget.LinearLayout"));
 
             for (MobileElement sectionClass : sectionClassList){
-                String startTime = func.GetText_ElementByID(driver, sectionClass, "edu.au.auspark:id/startTime");
+                String startTime = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/startTime");
                 Assert.assertTrue(func.stringComparision(startTime,""));  // *****
 
-                String endTime = func.GetText_ElementByID(driver, sectionClass, "edu.au.auspark:id/endTime");
+                String endTime = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/endTime");
                 Assert.assertTrue(func.stringComparision(endTime,""));  // *****
 
-                String courseTitle = func.GetText_ElementByID(driver, sectionClass, "edu.au.auspark:id/subject");
+                String courseTitle = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/subject");
                 Assert.assertTrue(func.stringComparision(courseTitle,""));  // *****
 
-                String room = func.GetText_ElementByID(driver, sectionClass, "edu.au.auspark:id/room");
+                String room = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/room");
                 Assert.assertTrue(func.stringComparision(room,""));  // *****
             }
         }

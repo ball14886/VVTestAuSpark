@@ -14,7 +14,7 @@ import verificationandvalidation.ausparktest.Provider.Functions;
  * Created by supanattechasothon on 5/27/2017 AD.
  */
 
-public class T5_05_PlanList {
+public class T5_07_PreRegisterWithSavedSchedule {
 
     Functions func = new Functions();
     
@@ -56,5 +56,7 @@ public class T5_05_PlanList {
         }
 
     }
+
+
 
 }

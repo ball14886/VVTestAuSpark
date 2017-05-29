@@ -30,47 +30,47 @@ public class T1_01_Login {
 //        driver = new AndroidDriver(new URL(setupProvider.GetAndroidDriverURL()),setupProvider.GetDesiredCapabilities());
 //        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //    }
-    @Test
-    public void testLogin(AppiumDriver driver) throws Exception {
-
-        System.out.println("isLogin: " + func.isAuthorization(driver));
-
-        func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("5610189");
-        func.threadSleep(200);
-
-        func.getElementByID(driver, "edu.au.auspark:id/edtPass").sendKeys("0841533610");
-        func.threadSleep(100);
-
-        func.getElementByID(driver, "edu.au.auspark:id/btnLogin").click();
-
-        //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-
-        func.threadSleep(4000);
-//        System.out.println("isLogin: " + securityProvider.isAuthorization(driver));
-//        generalProvider.SwipeToOpenNavigationBar(driver);
-//        generalProvider.threadSleep(1000);
-//        //generalProvider.SwipeNavigationBarToClose(driver);
-//        generalProvider.SwipeMenuSidebarTopToDown(driver);
-//        generalProvider.threadSleep(1000);
-//        generalProvider.SwipeMenuSidebarDownToTop(driver);
-//        generalProvider.threadSleep(1000);
-//        generalProvider.SwipeNavigationBarToClose(driver);
-
-        List<MobileElement> list = func.getElementByID(driver, "edu.au.auspark:id/toolbar").findElements(By.className("android.widget.ImageButton"));
-        System.out.println("list: " + list.size());
-        list.get(0).click();
-
-//        Test_GradeList test_gradeList = new Test_GradeList();
-//        test_gradeList.setUp();
-//        test_gradeList.Test_GradeList();
-        //ScrollToTargetValue();
-    }
+//    @Test
+//    public void testLogin(AppiumDriver driver) throws Exception {
+//
+//        System.out.println("isLogin: " + func.isAuthorization(driver));
+//
+//        func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("5611779");
+//        func.threadSleep(200);
+//
+//        func.getElementByID(driver, "edu.au.auspark:id/edtPass").sendKeys("0841533610");
+//        func.threadSleep(100);
+//
+//        func.getElementByID(driver, "edu.au.auspark:id/btnLogin").click();
+//
+//        //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+//
+//        func.threadSleep(4000);
+////        System.out.println("isLogin: " + securityProvider.isAuthorization(driver));
+////        generalProvider.SwipeToOpenNavigationBar(driver);
+////        generalProvider.threadSleep(1000);
+////        //generalProvider.SwipeNavigationBarToClose(driver);
+////        generalProvider.SwipeMenuSidebarTopToDown(driver);
+////        generalProvider.threadSleep(1000);
+////        generalProvider.SwipeMenuSidebarDownToTop(driver);
+////        generalProvider.threadSleep(1000);
+////        generalProvider.SwipeNavigationBarToClose(driver);
+//
+//        List<MobileElement> list = func.getElementByID(driver, "edu.au.auspark:id/toolbar").findElements(By.className("android.widget.ImageButton"));
+//        System.out.println("list: " + list.size());
+//        list.get(0).click();
+//
+////        Test_GradeList test_gradeList = new Test_GradeList();
+////        test_gradeList.setUp();
+////        test_gradeList.Test_GradeList();
+//        //ScrollToTargetValue();
+//    }
 
     public void Test_T1_01_01(AppiumDriver driver) throws InterruptedException {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("5611779");
         func.threadSleep_1();
 
-        func.getElementByID(driver, "edu.au.auspark:id/edtPass").sendKeys("supantoy");
+        func.getElementByID(driver, "edu.au.auspark:id/edtPass").sendKeys("supantoyy");
         func.threadSleep_1();
 
         func.getElementByID(driver, "edu.au.auspark:id/btnLogin").click();
