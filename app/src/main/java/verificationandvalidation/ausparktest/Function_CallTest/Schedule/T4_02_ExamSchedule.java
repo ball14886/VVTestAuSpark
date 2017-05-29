@@ -1,9 +1,12 @@
 package verificationandvalidation.ausparktest.Function_CallTest.Schedule;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 import io.appium.java_client.AppiumDriver;
@@ -17,9 +20,18 @@ import verificationandvalidation.ausparktest.Provider.Functions;
 public class T4_02_ExamSchedule {
 
     Functions func = new Functions();
-    
+    AppiumDriver driver;
+
+    @Before
+    public void setUp() throws MalformedURLException {
+        driver = func.SetupDriver();
+    }
+
     @Test
-    public void Test_T4_02_01(AppiumDriver driver) throws Exception {
+    public void Test_T4_02_01() throws Exception {
+        func.loginWith5611779(driver);
+        func.threadSleep_4();
+
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 
@@ -57,6 +69,12 @@ public class T4_02_ExamSchedule {
             }
         }
 
+    }
+
+
+    @After
+    public void tearDown(){
+        driver.quit();
     }
 
 }

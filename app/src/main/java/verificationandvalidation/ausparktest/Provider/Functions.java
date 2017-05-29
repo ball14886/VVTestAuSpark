@@ -13,7 +13,7 @@ import io.appium.java_client.MobileElement;
  * Created by supanattechasothon on 5/9/2017 AD.
  */
 
-public class Functions {
+public class Functions extends SetupProvider{
 
     ActionProvider actionProvider = new ActionProvider();
 
@@ -153,4 +153,11 @@ public class Functions {
         return !isLogin;
     }
 
+    public void navigateBack(AppiumDriver driver){
+        driver.navigate().back();
+    }
+
+    public void hideKeyboard(AppiumDriver driver){
+        driver.hideKeyboard();
+    }
 }

@@ -17,7 +17,7 @@ import verificationandvalidation.ausparktest.Provider.Functions;
  * Created by supanattechasothon on 5/27/2017 AD.
  */
 
-public class T3_01_GradeList {
+public class T3_05_GradeSummary {
 
     Functions func = new Functions();
     AppiumDriver driver;
@@ -35,23 +35,20 @@ public class T3_01_GradeList {
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 
-        func.getElementByID(driver, "edu.au.auspark:id/item_gradeList").click();
+        func.getElementByID(driver, "edu.au.auspark:id/item_gradeSummary").click();
         func.threadSleep_1();
 
-        MobileElement container_frame_GradeSemesterList = func.getElementByID(driver, "edu.au.auspark:id/academicSwipeRefresh");
-        List<MobileElement> container_GradeSemesterList = container_frame_GradeSemesterList.findElements(By.className("android.widget.FrameLayout"));
+        MobileElement container_frame_GradeSemesterList = func.getElementByID(driver, "edu.au.auspark:id/gradeBlock");
+        List<MobileElement> container_GradeSemesterList = container_frame_GradeSemesterList.findElements(By.className("android.widget.LinearLayout"));
 
         for (MobileElement container_GradeSemester : container_GradeSemesterList){
-            String semesterYear = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Semester").getText();
-            Assert.assertTrue(func.stringComparision("*********",semesterYear));
+            String gradeType = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/gradeSummaryGradeHeader").getText();
+            Assert.assertTrue(func.stringComparision("*********",gradeType));
 
-            String GPA = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Grade").getText();
-            Assert.assertTrue(func.stringComparision("*********",GPA));
+            String courseNumber = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/gradeSummaryCourseNum").getText();
+            Assert.assertTrue(func.stringComparision("*********",courseNumber));
 
-            String credit = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Credit").getText();
-            Assert.assertTrue(func.stringComparision("*********",credit));
-
-            MobileElement container_gradeList = container_GradeSemester.findElement(By.id("edu.au.auspark:id/AcademicDetailHolder"));
+            MobileElement container_gradeList = container_GradeSemester.findElement(By.id("edu.au.auspark:id/gradeDetailBlock"));
             List<MobileElement> gradeList = container_gradeList.findElements(By.className("android.widget.FrameLayout"));
             for (MobileElement courseGrade : gradeList){
                 String courseCode = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Course_ID").getText();

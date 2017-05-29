@@ -1,10 +1,13 @@
 package verificationandvalidation.ausparktest.Function_CallTest.Pre_registration_Planner;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 import io.appium.java_client.AppiumDriver;
@@ -18,14 +21,23 @@ import verificationandvalidation.ausparktest.Provider.Functions;
 public class T5_10_AddCourseToNewPlan {
 
     Functions func = new Functions();
-    
+    AppiumDriver driver;
+
+    @Before
+    public void setUp() throws MalformedURLException {
+        driver = func.SetupDriver();
+    }
+
     @Test
-    public void Test_T5_08_01(AppiumDriver driver) throws Exception {
+    public void Test_T5_08_01() throws Exception {
         String courseCodeTest = "ACT1600";
         AddNewPlan(driver, courseCodeTest);
     }
 
     public void AddNewPlan(AppiumDriver driver, String newCourseCode) throws Exception {
+        func.loginWith5611779(driver);
+        func.threadSleep_4();
+
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 
@@ -77,5 +89,9 @@ public class T5_10_AddCourseToNewPlan {
     }
 
 
+    @After
+    public void tearDown(){
+        driver.quit();
+    }
 
 }

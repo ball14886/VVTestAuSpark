@@ -1,9 +1,12 @@
 package verificationandvalidation.ausparktest.Function_CallTest.Pre_registration_Planner;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 import io.appium.java_client.AppiumDriver;
@@ -17,9 +20,18 @@ import verificationandvalidation.ausparktest.Provider.Functions;
 public class T5_16_PreRegisterWithGenerateSchedule {
 
     Functions func = new Functions();
-    
+    AppiumDriver driver;
+
+    @Before
+    public void setUp() throws MalformedURLException {
+        driver = func.SetupDriver();
+    }
+
     @Test
-    public void Test_T5_16_01(AppiumDriver driver) throws Exception {
+    public void Test_T5_16_01() throws Exception {
+        func.loginWith5611779(driver);
+        func.threadSleep_4();
+
         T5_10_AddCourseToNewPlan T5_10 = new T5_10_AddCourseToNewPlan();
         T5_10.AddNewPlan(driver,"ACT1600"); // Add New Course (ACT1600)
         T5_10.AddNewPlan(driver,"ACT3626"); // Add New Course (ACT1600)
@@ -45,5 +57,11 @@ public class T5_16_PreRegisterWithGenerateSchedule {
         MobileElement toolbar = func.getElementByID(driver, "edu.au.auspark:id/toolbar");
         String titleToolbar = toolbar.findElements(By.className("android.widget.TextView")).get(0).getText();
         Assert.assertTrue(func.stringComparision(titleToolbar, "*************"));
+    }
+
+
+    @After
+    public void tearDown(){
+        driver.quit();
     }
 }

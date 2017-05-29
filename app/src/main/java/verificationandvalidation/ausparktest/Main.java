@@ -1,6 +1,7 @@
 package verificationandvalidation.ausparktest;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,15 +27,12 @@ import verificationandvalidation.ausparktest.Provider.SetupProvider;
  */
 
 public class Main {
-    AppiumDriver driver;
+    public static AppiumDriver driver;
     SetupProvider setupProvider = new SetupProvider();
 
     @Before
     public void setUp() throws MalformedURLException {
-        driver = new AndroidDriver(new URL(
-                setupProvider.GetAndroidDriverURL()),
-                setupProvider.GetDesiredCapabilities());
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
     }
 
 //    @Test
@@ -52,7 +50,7 @@ public class Main {
     public void T1_Student() throws Exception {
         T1_Main main = new T1_Main();
         main.T1_01_Login(driver);
-//        main.T1_02_ForgetPassword(driver);
+        main.T1_02_ForgetPassword(driver);
 //        main.T1_03_LoginFacebook(driver);
 //        main.T1_04_Logout(driver);
     }
@@ -100,9 +98,11 @@ public class Main {
         main.T6_02_ResetPassword(driver);
     }
 
+    Functions func = new Functions();
 
     @After
     public void tearDown(){
+        System.out.print("2222");
         driver.quit();
     }
 }

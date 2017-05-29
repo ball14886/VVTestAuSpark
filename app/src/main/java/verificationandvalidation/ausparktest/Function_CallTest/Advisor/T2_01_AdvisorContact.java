@@ -1,6 +1,11 @@
 package verificationandvalidation.ausparktest.Function_CallTest.Advisor;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+import java.net.MalformedURLException;
 
 import io.appium.java_client.AppiumDriver;
 import verificationandvalidation.ausparktest.Provider.Functions;
@@ -12,8 +17,17 @@ import verificationandvalidation.ausparktest.Provider.Functions;
 public class T2_01_AdvisorContact {
 
     Functions func = new Functions();
+    AppiumDriver driver;
 
-    public void Test_T2_01_01(AppiumDriver driver) throws Exception {
+    @Before
+    public void setUp() throws MalformedURLException {
+        driver = func.SetupDriver();
+    }
+
+    @Test
+    public void Test_T2_01_01() throws Exception {
+        func.loginWith5611779(driver);
+        func.threadSleep_4();
 
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
@@ -34,7 +48,7 @@ public class T2_01_AdvisorContact {
         func.threadSleep_1();
 
         String advisorEmail = func.getElementByID(driver, "edu.au.auspark:id/advisorEmail").getText();
-        Assert.assertTrue(func.stringComparision(advisorEmail,"songsak@gmail.com"));
+        Assert.assertTrue(func.stringComparision(advisorEmail,"songsakchn@au.edu"));
         func.threadSleep_1();
 
         String advisorOfficeRoom = func.getElementByID(driver, "edu.au.auspark:id/advisorOfficeRoom").getText();
@@ -46,4 +60,8 @@ public class T2_01_AdvisorContact {
         func.threadSleep_1();
     }
 
+    @After
+    public void tearDown(){
+        driver.quit();
+    }
 }

@@ -19,12 +19,12 @@ public class T4_Main {
 
     public void T4_01_Schedule(AppiumDriver driver) throws Exception {
         T4_01_Schedule T4_01 = new T4_01_Schedule();
-        T4_01.Test_T4_01_01(driver);
+        T4_01.Test_T4_01_01();
     }
 
     public void T4_02_ExamSchedule(AppiumDriver driver) throws Exception {
         T4_02_ExamSchedule T4_02 = new T4_02_ExamSchedule();
-        T4_02.Test_T4_02_01(driver);
+        T4_02.Test_T4_02_01();
     }
 
 }

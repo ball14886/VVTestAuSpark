@@ -17,10 +17,10 @@ public class T6_Main {
 
     public void T6_02_ResetPassword(AppiumDriver driver) throws Exception {
         T6_02_ResetPassword T2_01 = new T6_02_ResetPassword();
-        T2_01.Test_T6_02_01(driver);
-        T2_01.Test_T6_02_02(driver);
-        T2_01.Test_T6_02_03(driver);
-        T2_01.Test_T6_02_04(driver);
-        T2_01.Test_T6_02_05(driver);
+        T2_01.Test_T6_02_01();
+        T2_01.Test_T6_02_02();
+        T2_01.Test_T6_02_03();
+        T2_01.Test_T6_02_04();
+        T2_01.Test_T6_02_05();
     }
 }
