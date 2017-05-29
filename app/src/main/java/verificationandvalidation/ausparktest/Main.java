@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import verificationandvalidation.ausparktest.Function_CallTest.Academic_Record.T3_Main;
-import verificationandvalidation.ausparktest.Function_CallTest.Academic_Record.Test_GradeList;
 import verificationandvalidation.ausparktest.Function_CallTest.Advisor.T2_Main;
 import verificationandvalidation.ausparktest.Function_CallTest.Other_Settings.T6_Main;
 import verificationandvalidation.ausparktest.Function_CallTest.Pre_registration_Planner.T5_Main;
@@ -53,33 +52,33 @@ public class Main {
     public void T1_Student() throws Exception {
         T1_Main main = new T1_Main();
         main.T1_01_Login(driver);
-        main.T1_02_ForgetPassword(driver);
-        main.T1_03_LoginFacebook(driver);
-        main.T1_04_Logout(driver);
+//        main.T1_02_ForgetPassword(driver);
+//        main.T1_03_LoginFacebook(driver);
+//        main.T1_04_Logout(driver);
     }
 
-    @Test
+
     public void T2_Schedule()  throws Exception {
         T2_Main main = new T2_Main();
         main.T2_01_AdvisorContact(driver);
         main.T2_02_AdvisorInformation(driver);
     }
 
-    @Test
+
     public void T3_AcademicRecord()  throws Exception {
         T3_Main main = new T3_Main();
         main.T3_01_GradeList(driver);
         main.T3_03_Transcript(driver);
     }
 
-    @Test
+
     public void T4_Schedule()  throws Exception {
         T4_Main main = new T4_Main();
         main.T4_01_Schedule(driver);
         main.T4_02_ExamSchedule(driver);
     }
 
-    @Test
+
     public void T5_PreRegistrationPlanner()  throws Exception {
         T5_Main main = new T5_Main();
         main.T5_05_PlanList(driver);
@@ -95,17 +94,12 @@ public class Main {
         main.T5_17_ExamScheduleWithGeneratedSchedule(driver);
     }
 
-    @Test
+
     public void T6_OtherSettings()  throws Exception {
         T6_Main main = new T6_Main();
         main.T6_02_ResetPassword(driver);
     }
 
-    public void AcademicRecord_Test() throws Exception {
-        Test_GradeList gradeListTest = new Test_GradeList();
-        gradeListTest.Test_GradeLista(driver);
-    }
-    
 
     @After
     public void tearDown(){

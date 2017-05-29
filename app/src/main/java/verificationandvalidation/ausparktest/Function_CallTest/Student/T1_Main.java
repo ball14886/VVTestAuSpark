@@ -10,11 +10,9 @@ import verificationandvalidation.ausparktest.Function_CallTest.Advisor.T2_02_Adv
 
 public class T1_Main {
 
-
     public void Run(AppiumDriver driver) throws Exception {
         T1_01_Login(driver);
         T1_02_ForgetPassword(driver);
-
     }
 
     public void T1_01_Login(AppiumDriver driver) throws Exception {

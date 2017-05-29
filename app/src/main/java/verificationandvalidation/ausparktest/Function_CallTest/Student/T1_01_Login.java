@@ -60,12 +60,9 @@ public class T1_01_Login {
 //        System.out.println("list: " + list.size());
 //        list.get(0).click();
 //
-////        Test_GradeList test_gradeList = new Test_GradeList();
-////        test_gradeList.setUp();
-////        test_gradeList.Test_GradeList();
-//        //ScrollToTargetValue();
 //    }
 
+    @Test
     public void Test_T1_01_01(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("5611779");
         func.threadSleep_1();
@@ -74,12 +71,15 @@ public class T1_01_Login {
         func.threadSleep_1();
 
         func.getElementByID(driver, "edu.au.auspark:id/btnLogin").click();
-        func.threadSleep_4();
+        func.threadSleep_5();
+
 
         boolean isLogin = func.isAuthorization(driver);
         Assert.assertTrue(isLogin);
+        System.out.println("Test_T1_01_01()");
     }
 
+    @Test
     public void Test_T1_01_02(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("");
         func.threadSleep_1();
@@ -88,12 +88,14 @@ public class T1_01_Login {
         func.threadSleep_1();
 
         func.getElementByID(driver, "edu.au.auspark:id/btnLogin").click();
-        func.threadSleep_4();
+        func.threadSleep_5();
 
+        System.out.println("Test_T1_01_02()");
         boolean isLogin = func.isAuthorization(driver);
         Assert.assertFalse(isLogin);
     }
 
+    @Test
     public void Test_T1_01_03(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("5611779");
         func.threadSleep_1();
@@ -108,6 +110,7 @@ public class T1_01_Login {
         Assert.assertFalse(isLogin);
     }
 
+    @Test
     public void Test_T1_01_04(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("1");
         func.threadSleep_1();
@@ -122,6 +125,7 @@ public class T1_01_Login {
         Assert.assertFalse(isLogin);
     }
 
+    @Test
     public void Test_T1_01_05(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("");
         func.threadSleep_1();
