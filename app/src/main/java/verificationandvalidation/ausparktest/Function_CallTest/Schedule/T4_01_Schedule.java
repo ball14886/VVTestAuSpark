@@ -33,32 +33,32 @@ public class T4_01_Schedule {
         List<MobileElement> schedule_courseList = container_schedule.findElements(By.className("android.widget.LinearLayout"));
 
         for (MobileElement course : schedule_courseList){
-            String courseCode = func.getElementByID(driver, course, "edu.au.auspark:id/courseID");
+            String courseCode = func.getElementByID(driver, course, "edu.au.auspark:id/courseID").getText();
             Assert.assertTrue(func.stringComparision(courseCode,""));  // *****
 
-            String sectionNumber = func.getElementByID(driver, course, "edu.au.auspark:id/courseSection");
+            String sectionNumber = func.getElementByID(driver, course, "edu.au.auspark:id/courseSection").getText();
             Assert.assertTrue(func.stringComparision(sectionNumber,""));  // *****
 
-            String courseTitle = func.getElementByID(driver, course, "edu.au.auspark:id/courseName");
+            String courseTitle = func.getElementByID(driver, course, "edu.au.auspark:id/courseName").getText();
             Assert.assertTrue(func.stringComparision(courseTitle,""));  // *****
 
-            String remark = func.getElementByID(driver, course, "edu.au.auspark:id/schedule_block_remark");
+            String remark = func.getElementByID(driver, course, "edu.au.auspark:id/schedule_block_remark").getText();
             Assert.assertTrue(func.stringComparision(remark,""));  // *****
 
             MobileElement container_sectionClass = course.findElement(By.id("edu.au.auspark:id/ScheduleListDetail"));
             List<MobileElement> sectionClassList = container_sectionClass.findElements(By.className("android.widget.FrameLayout"));
 
             for (MobileElement sectionClass : sectionClassList){
-                String dayName = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/dayName");
+                String dayName = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/dayName").getText();
                 Assert.assertTrue(func.stringComparision(dayName,""));  // *****
 
-                String time = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/courseTime");
+                String time = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/courseTime").getText();
                 Assert.assertTrue(func.stringComparision(time,""));  // *****
 
-                String room = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/roomCode");
+                String room = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/roomCode").getText();
                 Assert.assertTrue(func.stringComparision(room,""));  // *****
 
-                String instructorName = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/courseInstructor");
+                String instructorName = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/courseInstructor").getText();
                 Assert.assertTrue(func.stringComparision(instructorName,""));  // *****
             }
         }

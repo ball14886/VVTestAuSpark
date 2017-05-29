@@ -66,7 +66,7 @@ public class T1_01_Login {
 //        //ScrollToTargetValue();
 //    }
 
-    public void Test_T1_01_01(AppiumDriver driver) throws InterruptedException {
+    public void Test_T1_01_01(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("5611779");
         func.threadSleep_1();
 
@@ -80,7 +80,7 @@ public class T1_01_Login {
         Assert.assertTrue(isLogin);
     }
 
-    public void Test_T1_01_02(AppiumDriver driver) throws InterruptedException {
+    public void Test_T1_01_02(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("");
         func.threadSleep_1();
 
@@ -94,7 +94,7 @@ public class T1_01_Login {
         Assert.assertFalse(isLogin);
     }
 
-    public void Test_T1_01_03(AppiumDriver driver) throws InterruptedException {
+    public void Test_T1_01_03(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("5611779");
         func.threadSleep_1();
 
@@ -108,7 +108,7 @@ public class T1_01_Login {
         Assert.assertFalse(isLogin);
     }
 
-    public void Test_T1_01_04(AppiumDriver driver) throws InterruptedException {
+    public void Test_T1_01_04(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("1");
         func.threadSleep_1();
 
@@ -122,7 +122,7 @@ public class T1_01_Login {
         Assert.assertFalse(isLogin);
     }
 
-    public void Test_T1_01_05(AppiumDriver driver) throws InterruptedException {
+    public void Test_T1_01_05(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("");
         func.threadSleep_1();
 

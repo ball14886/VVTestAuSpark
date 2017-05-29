@@ -15,7 +15,7 @@ public class T6_02_ResetPassword {
     Functions func = new Functions();
     
     @Test
-    public void Test_T3_03_01(AppiumDriver driver) throws Exception {
+    public void Test_T6_02_01(AppiumDriver driver) throws Exception {
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 
@@ -52,7 +52,7 @@ public class T6_02_ResetPassword {
     }
 
     @Test
-    public void Test_T3_03_02(AppiumDriver driver) throws Exception {
+    public void Test_T6_02_02(AppiumDriver driver) throws Exception {
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 
@@ -88,7 +88,7 @@ public class T6_02_ResetPassword {
     }
 
     @Test
-    public void Test_T3_03_03(AppiumDriver driver) throws Exception {
+    public void Test_T6_02_03(AppiumDriver driver) throws Exception {
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 
@@ -124,7 +124,7 @@ public class T6_02_ResetPassword {
     }
 
     @Test
-    public void Test_T3_03_04(AppiumDriver driver) throws Exception {
+    public void Test_T6_02_04(AppiumDriver driver) throws Exception {
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 
@@ -160,7 +160,7 @@ public class T6_02_ResetPassword {
     }
 
     @Test
-    public void Test_T3_03_05(AppiumDriver driver) throws Exception {
+    public void Test_T6_02_05(AppiumDriver driver) throws Exception {
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 

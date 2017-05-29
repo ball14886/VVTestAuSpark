@@ -13,7 +13,7 @@ public class T1_02_ForgetPassword {
 
     Functions func = new Functions();
 
-    public void Test_T1_02_01(AppiumDriver driver) throws InterruptedException {
+    public void Test_T1_02_01(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("5611779");
         func.threadSleep_1();
 
@@ -26,7 +26,7 @@ public class T1_02_ForgetPassword {
 
     }
 
-    public void Test_T1_02_02(AppiumDriver driver) throws InterruptedException {
+    public void Test_T1_02_02(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("");
         func.threadSleep_1();
 
@@ -39,7 +39,7 @@ public class T1_02_ForgetPassword {
 
     }
 
-    public void Test_T1_02_03(AppiumDriver driver) throws InterruptedException {
+    public void Test_T1_02_03(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("5611779");
         func.threadSleep_1();
 
@@ -52,7 +52,7 @@ public class T1_02_ForgetPassword {
 
     }
 
-    public void Test_T1_02_04(AppiumDriver driver) throws InterruptedException {
+    public void Test_T1_02_04(AppiumDriver driver) throws Exception {
         func.getElementByID(driver, "edu.au.auspark:id/edtID").sendKeys("");
         func.threadSleep_1();
 

@@ -66,14 +66,7 @@ public class Functions {
 //        return null;
 //    }
 
-    public List<MobileElement> getElementByClassName(AppiumDriver driver, String byClassName){
-        if (existsElementByClass(driver, byClassName)) {
-            List<MobileElement> elementList = (List<MobileElement>)
-                    driver.findElement(By.className(byClassName));
-            return elementList;
-        }
-        return null;
-    }
+
 
     public void threadSleep(long millis) throws InterruptedException {
         Thread.sleep(millis);

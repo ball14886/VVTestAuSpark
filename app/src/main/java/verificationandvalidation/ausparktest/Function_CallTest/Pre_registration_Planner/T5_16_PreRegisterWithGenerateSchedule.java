@@ -14,27 +14,23 @@ import verificationandvalidation.ausparktest.Provider.Functions;
  * Created by supanattechasothon on 5/27/2017 AD.
  */
 
-public class T5_07_PreRegisterWithSavedSchedule {
+public class T5_16_PreRegisterWithGenerateSchedule {
 
     Functions func = new Functions();
     
     @Test
-    public void Test_T5_07_01(AppiumDriver driver) throws Exception {
-        func.SwipeToOpenNavigationBar(driver);
-        func.threadSleep_2();
+    public void Test_T5_16_01(AppiumDriver driver) throws Exception {
+        T5_10_AddCourseToNewPlan T5_10 = new T5_10_AddCourseToNewPlan();
+        T5_10.AddNewPlan(driver,"ACT1600"); // Add New Course (ACT1600)
+        T5_10.AddNewPlan(driver,"ACT3626"); // Add New Course (ACT1600)
 
-        func.SwipeMenuSidebarTopToDown(driver);
-        func.threadSleep_2();
+        func.getElementByID(driver, "edu.au.auspark:id/showSchedule").click();
+        func.threadSleep_5();
 
-        func.getElementByID(driver, "edu.au.auspark:id/item_planList").click();
-        func.threadSleep_4();
+        MobileElement container_generateSchedule = func.getElementByID(driver, "edu.au.auspark:id/generatedScheduleList");
+        List<MobileElement> generateScheduleList = container_generateSchedule.findElements(By.className("android.widget.LinearLayout"));
 
-        MobileElement container_planSchedule = func.getElementByID(driver, "edu.au.auspark:id/regisPlannerHolder");
-        List<MobileElement> planScheduleList = container_planSchedule.findElements(By.className("android.widget.LinearLayout"));
-
-        planScheduleList.get(0).click();
-
-        func.getElementByID(driver,planScheduleList.get(0), "edu.au.auspark:id/regisBtn").click();
+        func.getElementByID(driver, generateScheduleList.get(0), "edu.au.auspark:id/regisBtn").click();
         func.threadSleep_2();
 
         func.getElementByID(driver, "android:id/message");
@@ -49,11 +45,5 @@ public class T5_07_PreRegisterWithSavedSchedule {
         MobileElement toolbar = func.getElementByID(driver, "edu.au.auspark:id/toolbar");
         String titleToolbar = toolbar.findElements(By.className("android.widget.TextView")).get(0).getText();
         Assert.assertTrue(func.stringComparision(titleToolbar, "*************"));
-
-
-
     }
-
-
-
 }
