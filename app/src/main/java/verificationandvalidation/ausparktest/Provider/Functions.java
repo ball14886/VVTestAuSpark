@@ -95,6 +95,10 @@ public class Functions {
         Thread.sleep(5000);
     }
 
+    public void threadSleep_5() throws InterruptedException {
+        Thread.sleep(8000);
+    }
+
     public Boolean stringComparision(String one, String two){
         return one.trim().toLowerCase().equals(two.trim().toLowerCase());
     }
