@@ -84,7 +84,7 @@ public class T4_01_Schedule {
 
     public List<mClassSchedule> getClassDetailsList(){
         List<mClassSchedule> classScheduleList = new ArrayList<mClassSchedule>();
-        
+
         classScheduleList.add(Get_BG14038());
         classScheduleList.add(Get_BG2001());
         classScheduleList.add(Get_LA4606());
