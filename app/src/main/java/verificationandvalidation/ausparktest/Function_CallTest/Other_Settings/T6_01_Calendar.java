@@ -67,7 +67,14 @@ public class T6_01_Calendar {
             int j_index = 0;
             for (MobileElement day : dayList) {
                 String dayNumber = func.getElementByID(driver, day,"edu.au.auspark:id/date_act").getText();
-                Assert.assertTrue(func.stringComparision(calendar.get(j_index).getDayNumber(), dayNumber));
+
+                System.out.println("calendar : " + calendar.get(j_index).getDayNumber());
+                System.out.println("dayNumber : " + dayNumber);
+                if(calendar.get(j_index).getDayNumber().length() == 1){
+                    Assert.assertTrue(func.stringComparision("0" + calendar.get(j_index).getDayNumber(), dayNumber));
+                }else{
+                    Assert.assertTrue(func.stringComparision(calendar.get(j_index).getDayNumber(), dayNumber));
+                }
 
 //                String colorDot = func.getElementByID(driver, "edu.au.auspark:id/color_dot").getText();
 //                Assert.assertTrue(func.stringComparision(calendar.get(j_index).get, colorDot));
