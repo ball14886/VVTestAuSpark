@@ -7,10 +7,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import verificationandvalidation.ausparktest.Models.mClassDetails;
+import verificationandvalidation.ausparktest.Models.mClassSchedule;
 import verificationandvalidation.ausparktest.Provider.Functions;
 
 /**
@@ -39,7 +42,6 @@ public class T4_01_Schedule {
         func.threadSleep_4();
 
         String semesterYear = func.getElementByID(driver, "edu.au.auspark:id/semester").getText();
-
 
         MobileElement container_schedule = func.getElementByID(driver, "edu.au.auspark:id/ScheduleBlockHolder");
         List<MobileElement> schedule_courseList = container_schedule.findElements(By.className("android.widget.LinearLayout"));
@@ -79,6 +81,31 @@ public class T4_01_Schedule {
         String studentID = func.getElementByID(driver, "edu.au.auspark:id/transcript_studentID").getText();
         Assert.assertTrue(func.stringComparision(studentID,"5611779"));
 
+    }
+
+    public List<mClassSchedule> getClassDetailsList(){
+        List<mClassSchedule> classScheduleList = new ArrayList<mClassSchedule>();
+
+        //----------- BG14038 ------------
+        mClassSchedule classSchedule = new mClassSchedule();
+        classSchedule.setCourseCode("BG14038");
+        classSchedule.setSectionNumber("546");
+        classSchedule.setCourseName("PROFESSIONAL ETHICS SEMINAR VIII");
+        classSchedule.setRemark("REMARK: MARCH 31, 2017");
+        //---------
+        List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
+        mClassDetails classDetails = new mClassDetails();
+        classDetails.setDayName("FRIDAY (31/03/17 )");
+        classDetails.setTime("12:00 - 15:00");
+        classDetails.setRoomCode("SR416");
+        classDetails.setInstructorName("A.Ratsame");
+        classDetailsList.add(classDetails);
+        //-----------------------
+
+        classSchedule.setClassDetailsList(classDetailsList);
+        classScheduleList.add(classSchedule);
+
+        return classScheduleList;
     }
 
 
