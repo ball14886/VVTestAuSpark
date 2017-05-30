@@ -11,7 +11,7 @@ public class mAcademicBySemester {
     public String semesterYear;
     public String GPA;
     public String credit;
-    public List<mGradeList> mMGradeList;
+    public List<mGradeList> mGradeList;
 
     public String getSemesterYear() {
         return semesterYear;
@@ -39,11 +39,11 @@ public class mAcademicBySemester {
     }
 
     public List<mGradeList> getGradeList() {
-        return mMGradeList;
+        return mGradeList;
     }
 
     public void setGradeList(List<mGradeList> mGradeList) {
-        this.mMGradeList = mGradeList;
+        this.mGradeList = mGradeList;
     }
 
 
