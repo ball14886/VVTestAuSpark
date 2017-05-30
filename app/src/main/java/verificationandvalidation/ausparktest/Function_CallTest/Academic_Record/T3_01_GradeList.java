@@ -7,10 +7,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import verificationandvalidation.ausparktest.Models.mAcademicBySemester;
+import verificationandvalidation.ausparktest.Models.mGradeList;
 import verificationandvalidation.ausparktest.Provider.Functions;
 
 /**
@@ -68,9 +71,172 @@ public class T3_01_GradeList {
 
     }
 
+    public mGradeList getBG14038(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "BG14038";
+        mgl.courseName = "PROFESSIONAL ETHICS SEMINAR VIII";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getBG2001(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "BG2001";
+        mgl.courseName = "ENGLISH IV";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getLA4606(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "LA4606";
+        mgl.courseName = "INTELLECTUAL PROPERTY LAW";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getMT4201(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "MT4201";
+        mgl.courseName = "SOCIAL INTERESTS, GOVERNMENT POLICIES AND TECHNOLOGY";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getSC4299(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "SC4299";
+        mgl.courseName = "SENIOR PROJECT";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getSC4373(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "SC4373";
+        mgl.courseName = "WEB APPLICATION DEVELOPMENT";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getSC4374(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "SC4374";
+        mgl.courseName = "ENTERPRISE APPLICATION DEVELOPMENT";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getSC4437(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "SC4437";
+        mgl.courseName = "SELECTED TOPIC IN SOFTWARE VERIFICATION AND VALIDATION";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public List<mGradeList> firstSemester(){
+        List<mGradeList> firstSemester = new ArrayList<mGradeList>();
+        firstSemester.add(getBG2001());
+        firstSemester.add(getLA4606());
+        firstSemester.add(getMT4201());
+        firstSemester.add(getSC4299());
+        firstSemester.add(getSC4373());
+        firstSemester.add(getSC4374());
+        firstSemester.add(getSC4437());
+        return firstSemester;
+    }
+
+    public mGradeList getBG14037(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "BG14037";
+        mgl.courseName = "PROFESSIONAL ETHICS SEMINAR VII";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+//    public mGradeList getBG2001(){
+//        mGradeList mgl = new mGradeList();
+//        mgl.courseCode = "BG2001";
+//        mgl.courseName = "ENGLISH IV";
+//        mgl.finalGrade = "Show";
+//        return mgl;
+//    }
+
+    public mGradeList getDA4301(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "DA4301";
+        mgl.courseName = "OPERATION RESEARCH I";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getSC3351(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "SC3351";
+        mgl.courseName = "COMPUTER NETWORKS";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getSC4418(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "SC4418";
+        mgl.courseName = "SELECTED TOPICS IN DATA WAREHOUSING";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getSC4423(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "SC4423";
+        mgl.courseName = "SELECTED TOPICS IN INTRODUCTION TO RECOMMENDER SYSTEMS";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public mGradeList getSC4425(){
+        mGradeList mgl = new mGradeList();
+        mgl.courseCode = "SC4425";
+        mgl.courseName = "ST IN IPHONE/IPAD MOBILE APPLICATION DEVELOPMENT";
+        mgl.finalGrade = "Show";
+        return mgl;
+    }
+
+    public List<mGradeList> secondSemester(){
+        List<mGradeList> firstSemester = new ArrayList<mGradeList>();
+        firstSemester.add(getBG2001());
+        firstSemester.add(getDA4301());
+        firstSemester.add(getSC3351());
+        firstSemester.add(getSC4418());
+        firstSemester.add(getSC4423());
+        firstSemester.add(getSC4425());
+        return firstSemester;
+    }
+
+    public mAcademicBySemester getFirstSemester(){
+        mAcademicBySemester theSemester = new mAcademicBySemester();
+        theSemester.semesterYear = "2/2016";
+        theSemester.credit = "0";
+        theSemester.GPA = "0.00";
+        theSemester.mGradeList = firstSemester();
+        return  theSemester;
+    }
+
+    public mAcademicBySemester getSecondSemester(){
+        mAcademicBySemester theSemester = new mAcademicBySemester();
+        theSemester.semesterYear = "1/2016";
+        theSemester.credit = "15";
+        theSemester.GPA = "3.30";
+        theSemester.mGradeList = secondSemester();
+        return  theSemester;
+    }
+
     @After
     public void tearDown(){
         driver.quit();
     }
+
+
 
 }

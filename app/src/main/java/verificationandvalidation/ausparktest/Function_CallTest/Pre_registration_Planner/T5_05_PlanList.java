@@ -65,8 +65,8 @@ public class T5_05_PlanList {
 
             }
         }
-
     }
+
     @After
     public void tearDown(){
         driver.quit();
