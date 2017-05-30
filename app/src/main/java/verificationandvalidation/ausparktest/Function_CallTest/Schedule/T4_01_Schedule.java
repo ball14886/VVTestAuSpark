@@ -84,11 +84,14 @@ public class T4_01_Schedule {
 
     public List<mClassSchedule> getClassDetailsList(){
         List<mClassSchedule> classScheduleList = new ArrayList<mClassSchedule>();
-
-        //----------- BG14038 ------------
-        mClassSchedule BG14038_classSchedule = new mClassSchedule();
-        //---------------------------------
-        classScheduleList.add(BG14038_classSchedule);
+        
+        classScheduleList.add(Get_BG14038());
+        classScheduleList.add(Get_BG2001());
+        classScheduleList.add(Get_LA4606());
+        classScheduleList.add(Get_SC4299());
+        classScheduleList.add(Get_SC4373());
+        classScheduleList.add(Get_SC4374());
+        classScheduleList.add(Get_SC4437());
 
         return classScheduleList;
     }
@@ -119,14 +122,128 @@ public class T4_01_Schedule {
         classSchedule.setCourseCode("BG2001");
         classSchedule.setSectionNumber("404");
         classSchedule.setCourseName("ENGLISH IV");
-        classSchedule.setRemark("REMARK: MARCH 31, 2017");
+        classSchedule.setRemark("REMARK: ");
         //----------------
         List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
         mClassDetails classDetails = new mClassDetails();
-        classDetails.setDayName("FRIDAY (31/03/17 )");
-        classDetails.setTime("12:00 - 15:00");
-        classDetails.setRoomCode("SR416");
-        classDetails.setInstructorName("A.Ratsame");
+        classDetails.setDayName("WEDNESDAY");
+        classDetails.setTime("12:00 - 13:30");
+        classDetails.setRoomCode("SG407");
+        classDetails.setInstructorName("ROBERT JOHN HADDEN III");
+        classDetailsList.add(classDetails);
+        //----------------
+        classDetails = new mClassDetails();
+        classDetails.setDayName("MONDAY");
+        classDetails.setTime("10:30 - 13:30");
+        classDetails.setRoomCode("SG407");
+        classDetails.setInstructorName("VAUGHN BAXTER WARJRI");
+        classDetailsList.add(classDetails);
+        //----------------
+        classDetails = new mClassDetails();
+        classDetails.setDayName("WEDNESDAY");
+        classDetails.setTime("10:30 - 12:00");
+        classDetails.setRoomCode("SG407");
+        classDetails.setInstructorName("VAUGHN BAXTER WARJRI");
+        classDetailsList.add(classDetails);
+        classSchedule.setClassDetailsList(classDetailsList);
+        return classSchedule;
+    }
+
+    public mClassSchedule Get_LA4606(){
+        //----------------
+        mClassSchedule classSchedule = new mClassSchedule();
+        classSchedule.setCourseCode("LA4606");
+        classSchedule.setSectionNumber("541");
+        classSchedule.setCourseName("INTELLECTUAL PROPERTY LAW");
+        classSchedule.setRemark("REMARK: ");
+        //----------------
+        List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
+        mClassDetails classDetails = new mClassDetails();
+        classDetails.setDayName("FRIDAY");
+        classDetails.setTime("09:00 - 11:00");
+        classDetails.setRoomCode("SR201");
+        classDetails.setInstructorName("NATTAPONG SUWAN-IN");
+        classDetailsList.add(classDetails);
+        //----------------
+        classDetails = new mClassDetails();
+        classDetails.setDayName("FRIDAY");
+        classDetails.setTime("11:00 - 12:00");
+        classDetails.setRoomCode("SR201");
+        classDetails.setInstructorName("PAKORN DAMRONGWATTANAPOKIN");
+        classDetailsList.add(classDetails);
+        //----------------
+        classSchedule.setClassDetailsList(classDetailsList);
+        return classSchedule;
+    }
+
+    public mClassSchedule Get_SC4299(){
+        //----------------
+        mClassSchedule classSchedule = new mClassSchedule();
+        classSchedule.setCourseCode("SC4299");
+        classSchedule.setSectionNumber("541");
+        classSchedule.setCourseName("SENIOR PROJECT");
+        classSchedule.setRemark("REMARK: ");
+        //----------------
+        List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
+        //----------------
+        classSchedule.setClassDetailsList(classDetailsList);
+        return classSchedule;
+    }
+
+    public mClassSchedule Get_SC4373(){
+        //----------------
+        mClassSchedule classSchedule = new mClassSchedule();
+        classSchedule.setCourseCode("SC4373");
+        classSchedule.setSectionNumber("541");
+        classSchedule.setCourseName("WEB APPLICATION DEVELOPMENT");
+        classSchedule.setRemark("REMARK: ");
+        //----------------
+        List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
+        mClassDetails classDetails = new mClassDetails();
+        classDetails.setDayName("TUESDAY");
+        classDetails.setTime("09:00 - 12:00");
+        classDetails.setRoomCode("VMS0204");
+        classDetails.setInstructorName("KIRATIJUTA BHUMICHITR");
+        classDetailsList.add(classDetails);
+        //----------------
+        classSchedule.setClassDetailsList(classDetailsList);
+        return classSchedule;
+    }
+
+    public mClassSchedule Get_SC4374(){
+        //----------------
+        mClassSchedule classSchedule = new mClassSchedule();
+        classSchedule.setCourseCode("SC4374");
+        classSchedule.setSectionNumber("541");
+        classSchedule.setCourseName("ENTERPRISE APPLICATION DEVELOPMENT");
+        classSchedule.setRemark("REMARK: ");
+        //----------------
+        List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
+        mClassDetails classDetails = new mClassDetails();
+        classDetails.setDayName("WEDNESDAY");
+        classDetails.setTime("13:30 - 16:30");
+        classDetails.setRoomCode("VMS0204");
+        classDetails.setInstructorName("CHAYAPOL MOEMENG");
+        classDetailsList.add(classDetails);
+        //----------------
+        classSchedule.setClassDetailsList(classDetailsList);
+        return classSchedule;
+    }
+
+    public mClassSchedule Get_SC4437(){
+        //----------------
+        mClassSchedule classSchedule = new mClassSchedule();
+        classSchedule.setCourseCode("SC4437");
+        classSchedule.setSectionNumber("541");
+        classSchedule.setCourseName("SELECTED TOPIC IN SOFTWARE VERIFICATION AND VALIDATION");
+        classSchedule.setRemark("REMARK: ");
+        //----------------
+        List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
+        mClassDetails classDetails = new mClassDetails();
+        classDetails.setDayName("TUESDAY");
+        classDetails.setTime("13:30 - 16:30");
+        classDetails.setRoomCode("VMS0202");
+        classDetails.setInstructorName("KWANKAMOL NONGPONG");
         classDetailsList.add(classDetails);
         //----------------
         classSchedule.setClassDetailsList(classDetailsList);
