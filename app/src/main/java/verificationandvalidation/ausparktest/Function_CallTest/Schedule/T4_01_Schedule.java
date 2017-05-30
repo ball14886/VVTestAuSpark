@@ -77,7 +77,6 @@ public class T4_01_Schedule {
             }
         }
 
-
         String studentID = func.getElementByID(driver, "edu.au.auspark:id/transcript_studentID").getText();
         Assert.assertTrue(func.stringComparision(studentID,"5611779"));
 
@@ -87,12 +86,21 @@ public class T4_01_Schedule {
         List<mClassSchedule> classScheduleList = new ArrayList<mClassSchedule>();
 
         //----------- BG14038 ------------
+        mClassSchedule BG14038_classSchedule = new mClassSchedule();
+        //---------------------------------
+        classScheduleList.add(BG14038_classSchedule);
+
+        return classScheduleList;
+    }
+
+    public mClassSchedule Get_BG14038(){
+        //----------------
         mClassSchedule classSchedule = new mClassSchedule();
         classSchedule.setCourseCode("BG14038");
         classSchedule.setSectionNumber("546");
         classSchedule.setCourseName("PROFESSIONAL ETHICS SEMINAR VIII");
         classSchedule.setRemark("REMARK: MARCH 31, 2017");
-        //---------
+        //----------------
         List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
         mClassDetails classDetails = new mClassDetails();
         classDetails.setDayName("FRIDAY (31/03/17 )");
@@ -100,14 +108,30 @@ public class T4_01_Schedule {
         classDetails.setRoomCode("SR416");
         classDetails.setInstructorName("A.Ratsame");
         classDetailsList.add(classDetails);
-        //-----------------------
-
+        //----------------
         classSchedule.setClassDetailsList(classDetailsList);
-        classScheduleList.add(classSchedule);
-
-        return classScheduleList;
+        return classSchedule;
     }
 
+    public mClassSchedule Get_BG2001(){
+        //----------------
+        mClassSchedule classSchedule = new mClassSchedule();
+        classSchedule.setCourseCode("BG2001");
+        classSchedule.setSectionNumber("404");
+        classSchedule.setCourseName("ENGLISH IV");
+        classSchedule.setRemark("REMARK: MARCH 31, 2017");
+        //----------------
+        List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
+        mClassDetails classDetails = new mClassDetails();
+        classDetails.setDayName("FRIDAY (31/03/17 )");
+        classDetails.setTime("12:00 - 15:00");
+        classDetails.setRoomCode("SR416");
+        classDetails.setInstructorName("A.Ratsame");
+        classDetailsList.add(classDetails);
+        //----------------
+        classSchedule.setClassDetailsList(classDetailsList);
+        return classSchedule;
+    }
 
     @After
     public void tearDown(){
