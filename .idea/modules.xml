@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AUSparkTest.iml" filepath="$PROJECT_DIR$/AUSparkTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/W14_AUSpark_AppiumTesting.iml" filepath="$PROJECT_DIR$/W14_AUSpark_AppiumTesting.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

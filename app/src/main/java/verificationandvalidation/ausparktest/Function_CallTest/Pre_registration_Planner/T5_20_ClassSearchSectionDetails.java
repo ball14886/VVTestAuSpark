@@ -62,7 +62,7 @@ public class T5_20_ClassSearchSectionDetails {
                 break;
             }
         }
-        //--- Section Details
+        //----- Section Details -----
 
         String courseCode = func.getElementByID(driver, "edu.au.auspark:id/courseIDHeader").getText();
         Assert.assertTrue(func.stringComparision("*********",courseCode));
