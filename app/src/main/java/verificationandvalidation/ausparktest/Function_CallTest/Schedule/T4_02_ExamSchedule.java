@@ -48,34 +48,41 @@ public class T4_02_ExamSchedule {
         func.getElementByID(driver, "edu.au.auspark:id/mid").click();
         func.threadSleep_1();
 
+
+        List<mClassExam> classExamList = getMidtermExamList();
+
         MobileElement container_midterm = func.getElementByID(driver, "edu.au.auspark:id/examMidtermLayout");
 
         MobileElement container_examSchedule = func.getElementByID(driver,container_midterm ,"edu.au.auspark:id/ExamBlockHolderFinal");
         List<MobileElement> examSchedule_courseList = container_examSchedule.findElements(By.className("android.widget.LinearLayout"));
 
+        int index = 0;
         for (MobileElement course : examSchedule_courseList){
             String examDate = func.getElementByID(driver, course, "edu.au.auspark:id/examDate").getText();
-            Assert.assertTrue(func.stringComparision(examDate,"************"));  // *****
+            Assert.assertTrue(func.stringComparision(examDate,classExamList.get(index).getDayNumber()));  // *****
 
             String examDayName = func.getElementByID(driver, course, "edu.au.auspark:id/examDayName").getText();
-            Assert.assertTrue(func.stringComparision(examDayName,"************"));  // *****
+            Assert.assertTrue(func.stringComparision(examDayName, classExamList.get(index).getDayName()));  // *****
 
             MobileElement container_sectionClass = course.findElement(By.id("edu.au.auspark:id/examListDetail"));
             List<MobileElement> sectionClassList = container_sectionClass.findElements(By.className("android.widget.LinearLayout"));
 
+            int j_index = 0;
+            List<mClassExamDetails> classExamDetailsList = classExamList.get(index).getExamDetailsList();
             for (MobileElement sectionClass : sectionClassList){
                 String startTime = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/startTime").getText();
-                Assert.assertTrue(func.stringComparision(startTime,"************"));  // *****
+                Assert.assertTrue(func.stringComparision(startTime, classExamDetailsList.get(j_index).getStartTime()));  // *****
 
                 String endTime = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/endTime").getText();
-                Assert.assertTrue(func.stringComparision(endTime,"************"));  // *****
+                Assert.assertTrue(func.stringComparision(endTime, classExamDetailsList.get(j_index).getEndTime()));  // *****
 
                 String courseTitle = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/subject").getText();
-                Assert.assertTrue(func.stringComparision(courseTitle,"************"));  // *****
+                Assert.assertTrue(func.stringComparision(courseTitle, classExamDetailsList.get(j_index).getCourseName()));  // *****
 
                 String room = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/room").getText();
-                Assert.assertTrue(func.stringComparision(room,"************"));  // *****
+                Assert.assertTrue(func.stringComparision(room, classExamDetailsList.get(j_index).getExamRoom()));  // *****
             }
+            index++;
         }
 
         //---------------------------------------------------------------------------
@@ -88,29 +95,33 @@ public class T4_02_ExamSchedule {
         container_examSchedule = func.getElementByID(driver, container_final,"edu.au.auspark:id/ExamBlockHolderFinal");
         examSchedule_courseList = container_examSchedule.findElements(By.className("android.widget.LinearLayout"));
 
+        index = 0;
         for (MobileElement course : examSchedule_courseList){
             String examDate = func.getElementByID(driver, course, "edu.au.auspark:id/examDate").getText();
-            Assert.assertTrue(func.stringComparision(examDate,"************"));  // *****
+            Assert.assertTrue(func.stringComparision(examDate,classExamList.get(index).getDayNumber()));  // *****
 
             String examDayName = func.getElementByID(driver, course, "edu.au.auspark:id/examDayName").getText();
-            Assert.assertTrue(func.stringComparision(examDayName,"************"));  // *****
+            Assert.assertTrue(func.stringComparision(examDayName, classExamList.get(index).getDayName()));  // *****
 
             MobileElement container_sectionClass = course.findElement(By.id("edu.au.auspark:id/examListDetail"));
             List<MobileElement> sectionClassList = container_sectionClass.findElements(By.className("android.widget.LinearLayout"));
 
+            int j_index = 0;
+            List<mClassExamDetails> classExamDetailsList = classExamList.get(index).getExamDetailsList();
             for (MobileElement sectionClass : sectionClassList){
                 String startTime = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/startTime").getText();
-                Assert.assertTrue(func.stringComparision(startTime,"************"));  // *****
+                Assert.assertTrue(func.stringComparision(startTime, classExamDetailsList.get(j_index).getStartTime()));  // *****
 
                 String endTime = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/endTime").getText();
-                Assert.assertTrue(func.stringComparision(endTime,"************"));  // *****
+                Assert.assertTrue(func.stringComparision(endTime, classExamDetailsList.get(j_index).getEndTime()));  // *****
 
                 String courseTitle = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/subject").getText();
-                Assert.assertTrue(func.stringComparision(courseTitle,"************"));  // *****
+                Assert.assertTrue(func.stringComparision(courseTitle, classExamDetailsList.get(j_index).getCourseName()));  // *****
 
                 String room = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/room").getText();
-                Assert.assertTrue(func.stringComparision(room,"************"));  // *****
+                Assert.assertTrue(func.stringComparision(room, classExamDetailsList.get(j_index).getExamRoom()));  // *****
             }
+            index++;
         }
 
     }

@@ -46,35 +46,42 @@ public class T4_01_Schedule {
         MobileElement container_schedule = func.getElementByID(driver, "edu.au.auspark:id/ScheduleBlockHolder");
         List<MobileElement> schedule_courseList = container_schedule.findElements(By.className("android.widget.LinearLayout"));
 
+        List<mClassSchedule> classScheduleList = getClassDetailsList();
+
+        int index = 0;
         for (MobileElement course : schedule_courseList){
             String courseCode = func.getElementByID(driver, course, "edu.au.auspark:id/courseID").getText();
-            Assert.assertTrue(func.stringComparision(courseCode,""));  // *****
+            Assert.assertTrue(func.stringComparision(courseCode,classScheduleList.get(index).getCourseCode()));  // *****
 
             String sectionNumber = func.getElementByID(driver, course, "edu.au.auspark:id/courseSection").getText();
-            Assert.assertTrue(func.stringComparision(sectionNumber,""));  // *****
+            Assert.assertTrue(func.stringComparision(sectionNumber,classScheduleList.get(index).getSectionNumber()));  // *****
 
             String courseTitle = func.getElementByID(driver, course, "edu.au.auspark:id/courseName").getText();
-            Assert.assertTrue(func.stringComparision(courseTitle,""));  // *****
+            Assert.assertTrue(func.stringComparision(courseTitle,classScheduleList.get(index).getCourseName()));  // *****
 
             String remark = func.getElementByID(driver, course, "edu.au.auspark:id/schedule_block_remark").getText();
-            Assert.assertTrue(func.stringComparision(remark,""));  // *****
+            Assert.assertTrue(func.stringComparision(remark,classScheduleList.get(index).getRemark()));  // *****
 
             MobileElement container_sectionClass = course.findElement(By.id("edu.au.auspark:id/ScheduleListDetail"));
             List<MobileElement> sectionClassList = container_sectionClass.findElements(By.className("android.widget.FrameLayout"));
 
+            int j_index = 0;
+            List<mClassDetails> classDetailsList = classScheduleList.get(index).getClassDetailsList();
             for (MobileElement sectionClass : sectionClassList){
                 String dayName = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/dayName").getText();
-                Assert.assertTrue(func.stringComparision(dayName,""));  // *****
+                Assert.assertTrue(func.stringComparision(dayName,classDetailsList.get(j_index).getDayName()));  // *****
 
                 String time = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/courseTime").getText();
-                Assert.assertTrue(func.stringComparision(time,""));  // *****
+                Assert.assertTrue(func.stringComparision(time,classDetailsList.get(j_index).getTime()));  // *****
 
                 String room = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/roomCode").getText();
-                Assert.assertTrue(func.stringComparision(room,""));  // *****
+                Assert.assertTrue(func.stringComparision(room,classDetailsList.get(j_index).getRoomCode()));  // *****
 
                 String instructorName = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/courseInstructor").getText();
-                Assert.assertTrue(func.stringComparision(instructorName,""));  // *****
+                Assert.assertTrue(func.stringComparision(instructorName,classDetailsList.get(j_index).getInstructorName()));  // *****
+                j_index++;
             }
+            index++;
         }
 
         String studentID = func.getElementByID(driver, "edu.au.auspark:id/transcript_studentID").getText();

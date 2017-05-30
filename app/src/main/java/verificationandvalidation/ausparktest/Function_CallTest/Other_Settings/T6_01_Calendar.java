@@ -7,10 +7,12 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import verificationandvalidation.ausparktest.Models.mCalendar;
 import verificationandvalidation.ausparktest.Provider.Functions;
 
 /**
@@ -73,6 +75,29 @@ public class T6_01_Calendar {
         }
     }
 
+    public List<mCalendar> getCalendarList(){
+        List<mCalendar> calendarList = new ArrayList<mCalendar>();
+
+        mCalendar calendar = new mCalendar();
+        calendar.setDayName("Last day to withdraw with 'W' via internet");
+        calendar.setDayNumber("4");
+        calendar.setDayStatus("G");
+        calendarList.add(calendar);
+
+        calendar = new mCalendar();
+        calendar.setDayName("Retrieve and download registered student namelists via internet for eGrading");
+        calendar.setDayNumber("8");
+        calendar.setDayStatus("G");
+        calendarList.add(calendar);
+
+        calendar = new mCalendar();
+        calendar.setDayName("Wisakha Bhucha Day(Holiday - no classes)");
+        calendar.setDayNumber("8");
+        calendar.setDayStatus("G");
+        calendarList.add(calendar);
+
+        return calendarList;
+    }
 
     @After
     public void tearDown(){
