@@ -2,9 +2,12 @@ package verificationandvalidation.ausparktest.Function_CallTest.Academic_Record;
 
 import junit.framework.Assert;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 import io.appium.java_client.AppiumDriver;
@@ -17,9 +20,21 @@ import verificationandvalidation.ausparktest.Provider.Functions;
 
 public class T3_04_CourseSurvey {
     Functions func = new Functions();
+    AppiumDriver driver;
+
+    @Before
+    public void setUp() throws MalformedURLException {
+        driver = func.SetupDriver();
+    }
+
+
 
     @Test
-    public void Test_T3_04_01(AppiumDriver driver) throws Exception {
+    public void Test_T3_04_01() throws Exception {
+
+        func.loginWith5611779(driver);
+        func.threadSleep_4();
+
         func.SwipeToOpenNavigationBar(driver);
         func.threadSleep_2();
 
@@ -39,12 +54,17 @@ public class T3_04_CourseSurvey {
             for (MobileElement courseGrade : gradeList){
 
                 String grade = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Sub_Grade").getText();
-                Assert.assertTrue(func.stringComparision("Show",GPA));
+                System.out.println(grade + " : " + grade);
+                Assert.assertTrue(func.stringComparision("Show",grade));
 
                 func.getElementByID(driver,"edu.au.auspark:id/Academic_Sub_Grade").click();
-                String theTitle = func.getElementByID(driver,"edu.au.auspark:id/action_bar").findElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView")).getText();
-                Assert.assertTrue(func.stringComparision("Survey",theTitle));
+                break;
             }
         }
+    }
+
+    @After
+    public void tearDown(){
+        driver.quit();
     }
 }
