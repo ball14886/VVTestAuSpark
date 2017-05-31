@@ -44,34 +44,54 @@ public class T3_01_GradeList {
         MobileElement container_frame_GradeSemesterList = func.getElementByID(driver, "edu.au.auspark:id/academicSwipeRefresh");
         List<MobileElement> container_GradeSemesterList = container_frame_GradeSemesterList.findElements(By.className("android.widget.FrameLayout"));
 
-        for (MobileElement container_GradeSemester : container_GradeSemesterList){
-            String semesterYear = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Semester").getText();
-            Assert.assertTrue(func.stringComparision("*********",semesterYear));
+        int index = 0;
+        for (MobileElement container_GradeSemester : container_GradeSemesterList) {
+            mAcademicBySemester theSem = new mAcademicBySemester();
+            if (index == 0) {
+                theSem = getFirstSemester();
+                String semesterYear = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Semester").getText();
+                Assert.assertTrue(func.stringComparision(theSem.semesterYear, semesterYear));
 
-            String GPA = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Grade").getText();
-            Assert.assertTrue(func.stringComparision("*********",GPA));
+                String GPA = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Grade").getText();
+                Assert.assertTrue(func.stringComparision(theSem.GPA, GPA));
 
-            String credit = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Credit").getText();
-            Assert.assertTrue(func.stringComparision("*********",credit));
+                String credit = func.getElementByID(driver, container_GradeSemester, "edu.au.auspark:id/Academic_Credit").getText();
+                //System.out.println(theSem.credit + " : " + credit);
+                Assert.assertTrue(func.stringComparision(theSem.credit, credit.charAt(0) + ""));
 
-            MobileElement container_gradeList = container_GradeSemester.findElement(By.id("edu.au.auspark:id/AcademicDetailHolder"));
-            List<MobileElement> gradeList = container_gradeList.findElements(By.className("android.widget.FrameLayout"));
-            for (MobileElement courseGrade : gradeList){
-                String courseCode = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Course_ID").getText();
-                Assert.assertTrue(func.stringComparision("*********",courseCode));
+                if (index == 0) {
 
-                String courseName = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Subject").getText();
-                Assert.assertTrue(func.stringComparision("*********",courseName));
+                    int anotherIndex = 0;
+                    System.out.println("index: " + anotherIndex);
+                    MobileElement container_gradeList = container_GradeSemester.findElement(By.id("edu.au.auspark:id/AcademicDetailHolder"));
+                    List<MobileElement> gradeList = container_gradeList.findElements(By.className("android.widget.FrameLayout"));
+                    for (MobileElement courseGrade : gradeList) {
 
-                String grade = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Sub_Grade").getText();
-                Assert.assertTrue(func.stringComparision("*********",grade));
+                        if (anotherIndex < 6) {
+                            String courseCode = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Course_ID").getText();
+                            System.out.println(courseCode + " : " + theSem.mGradeList.get(anotherIndex).courseCode);
+                            Assert.assertTrue(func.stringComparision(theSem.mGradeList.get(anotherIndex).courseCode, courseCode));
 
+                            String courseName = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Subject").getText();
+
+                            Assert.assertTrue(func.stringComparision(theSem.mGradeList.get(anotherIndex).courseName, courseName));
+
+                            String grade = func.getElementByID(driver, courseGrade, "edu.au.auspark:id/Academic_Sub_Grade").getText();
+                            Assert.assertTrue(func.stringComparision(theSem.mGradeList.get(anotherIndex).finalGrade, grade));
+
+                            anotherIndex++;
+                        } else {
+                            break;
+                        }
+                    }
+                }
+                index++;
             }
         }
 
     }
 
-    public mGradeList getBG14038(){
+    public mGradeList getBG14038() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "BG14038";
         mgl.courseName = "PROFESSIONAL ETHICS SEMINAR VIII";
@@ -79,7 +99,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getBG2001(){
+    public mGradeList getBG2001() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "BG2001";
         mgl.courseName = "ENGLISH IV";
@@ -87,7 +107,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getLA4606(){
+    public mGradeList getLA4606() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "LA4606";
         mgl.courseName = "INTELLECTUAL PROPERTY LAW";
@@ -95,7 +115,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getMT4201(){
+    public mGradeList getMT4201() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "MT4201";
         mgl.courseName = "SOCIAL INTERESTS, GOVERNMENT POLICIES AND TECHNOLOGY";
@@ -103,7 +123,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getSC4299(){
+    public mGradeList getSC4299() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "SC4299";
         mgl.courseName = "SENIOR PROJECT";
@@ -111,7 +131,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getSC4373(){
+    public mGradeList getSC4373() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "SC4373";
         mgl.courseName = "WEB APPLICATION DEVELOPMENT";
@@ -119,7 +139,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getSC4374(){
+    public mGradeList getSC4374() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "SC4374";
         mgl.courseName = "ENTERPRISE APPLICATION DEVELOPMENT";
@@ -127,7 +147,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getSC4437(){
+    public mGradeList getSC4437() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "SC4437";
         mgl.courseName = "SELECTED TOPIC IN SOFTWARE VERIFICATION AND VALIDATION";
@@ -135,8 +155,9 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public List<mGradeList> firstSemester(){
+    public List<mGradeList> firstSemester() {
         List<mGradeList> firstSemester = new ArrayList<mGradeList>();
+        firstSemester.add(getBG14038());
         firstSemester.add(getBG2001());
         firstSemester.add(getLA4606());
         firstSemester.add(getMT4201());
@@ -147,7 +168,7 @@ public class T3_01_GradeList {
         return firstSemester;
     }
 
-    public mGradeList getBG14037(){
+    public mGradeList getBG14037() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "BG14037";
         mgl.courseName = "PROFESSIONAL ETHICS SEMINAR VII";
@@ -163,7 +184,7 @@ public class T3_01_GradeList {
 //        return mgl;
 //    }
 
-    public mGradeList getDA4301(){
+    public mGradeList getDA4301() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "DA4301";
         mgl.courseName = "OPERATION RESEARCH I";
@@ -171,7 +192,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getSC3351(){
+    public mGradeList getSC3351() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "SC3351";
         mgl.courseName = "COMPUTER NETWORKS";
@@ -179,7 +200,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getSC4418(){
+    public mGradeList getSC4418() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "SC4418";
         mgl.courseName = "SELECTED TOPICS IN DATA WAREHOUSING";
@@ -187,7 +208,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getSC4423(){
+    public mGradeList getSC4423() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "SC4423";
         mgl.courseName = "SELECTED TOPICS IN INTRODUCTION TO RECOMMENDER SYSTEMS";
@@ -195,7 +216,7 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public mGradeList getSC4425(){
+    public mGradeList getSC4425() {
         mGradeList mgl = new mGradeList();
         mgl.courseCode = "SC4425";
         mgl.courseName = "ST IN IPHONE/IPAD MOBILE APPLICATION DEVELOPMENT";
@@ -203,8 +224,9 @@ public class T3_01_GradeList {
         return mgl;
     }
 
-    public List<mGradeList> secondSemester(){
+    public List<mGradeList> secondSemester() {
         List<mGradeList> firstSemester = new ArrayList<mGradeList>();
+        firstSemester.add(getBG14037());
         firstSemester.add(getBG2001());
         firstSemester.add(getDA4301());
         firstSemester.add(getSC3351());
@@ -214,29 +236,28 @@ public class T3_01_GradeList {
         return firstSemester;
     }
 
-    public mAcademicBySemester getFirstSemester(){
+    public mAcademicBySemester getFirstSemester() {
         mAcademicBySemester theSemester = new mAcademicBySemester();
         theSemester.semesterYear = "2/2016";
         theSemester.credit = "0";
         theSemester.GPA = "0.00";
         theSemester.mGradeList = firstSemester();
-        return  theSemester;
+        return theSemester;
     }
 
-    public mAcademicBySemester getSecondSemester(){
+    public mAcademicBySemester getSecondSemester() {
         mAcademicBySemester theSemester = new mAcademicBySemester();
         theSemester.semesterYear = "1/2016";
         theSemester.credit = "15";
         theSemester.GPA = "3.30";
         theSemester.mGradeList = secondSemester();
-        return  theSemester;
+        return theSemester;
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
-
 
 
 }
