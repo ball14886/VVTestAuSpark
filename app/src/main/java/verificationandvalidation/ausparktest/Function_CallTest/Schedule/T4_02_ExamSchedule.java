@@ -51,10 +51,18 @@ public class T4_02_ExamSchedule {
 
         List<mClassExam> classExamList = getMidtermExamList();
 
-        MobileElement container_midterm = func.getElementByID(driver, "edu.au.auspark:id/examMidtermLayout");
+        for(int i = 0 ; i < classExamList.size(); i++){
+            MobileElement container_midterm = func.getElementByID(driver, "edu.au.auspark:id/examMidtermLayout");
+            MobileElement container_examSchedule = func.getElementByID(driver,container_midterm ,"edu.au.auspark:id/ExamBlockHolderFinal");
+            List<MobileElement> examSchedule_courseList = container_examSchedule.findElements(By.className("android.widget.LinearLayout"));
 
-        MobileElement container_examSchedule = func.getElementByID(driver,container_midterm ,"edu.au.auspark:id/ExamBlockHolderFinal");
-        List<MobileElement> examSchedule_courseList = container_examSchedule.findElements(By.className("android.widget.LinearLayout"));
+
+        }
+
+
+
+
+
 
         int index = 0;
         for (MobileElement course : examSchedule_courseList){

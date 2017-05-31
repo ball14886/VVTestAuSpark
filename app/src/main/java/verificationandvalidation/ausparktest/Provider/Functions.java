@@ -32,6 +32,15 @@ public class Functions extends SetupProvider{
     public void ScrollTopToDown_ScreenOne(AppiumDriver driver) throws Exception{
         actionProvider.SwipeVertical(driver,0.9,0.25,0.99,1500);
     }
+    public void scrollTopToDown_1(AppiumDriver driver) throws Exception{
+        actionProvider.SwipeVertical(driver,0.9,0.8,0.99,1500);
+    }
+    public void scrollTopToDown_2(AppiumDriver driver) throws Exception{
+        actionProvider.SwipeVertical(driver,0.9,0.65,0.99,1500);
+    }
+    public void scrollTopToDown_3(AppiumDriver driver) throws Exception{
+        actionProvider.SwipeVertical(driver,0.9,0.4,0.99,1500);
+    }
 
     public boolean existsElementByID(AppiumDriver driver, String id) {
         try {
@@ -89,7 +98,7 @@ public class Functions extends SetupProvider{
     }
 
     public void threadSleep_5() throws InterruptedException {
-        Thread.sleep(8000);
+        Thread.sleep(14000);
     }
 
     public Boolean stringComparision(String one, String two){

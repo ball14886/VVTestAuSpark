@@ -39,54 +39,37 @@ public class T4_01_Schedule {
         func.threadSleep_2();
 
         func.getElementByID(driver, "edu.au.auspark:id/item_classSchedule").click();
-        func.threadSleep_4();
+        func.threadSleep_5();
 
         String semesterYear = func.getElementByID(driver, "edu.au.auspark:id/semester").getText();
-
-        MobileElement container_schedule = func.getElementByID(driver, "edu.au.auspark:id/ScheduleBlockHolder");
-        List<MobileElement> schedule_courseList = container_schedule.findElements(By.className("android.widget.LinearLayout"));
+        Assert.assertTrue(func.stringComparision("2/2016", semesterYear));
 
         List<mClassSchedule> classScheduleList = getClassDetailsList();
 
-        int index = 0;
-        for (MobileElement course : schedule_courseList){
-            String courseCode = func.getElementByID(driver, course, "edu.au.auspark:id/courseID").getText();
-            Assert.assertTrue(func.stringComparision(courseCode,classScheduleList.get(index).getCourseCode()));  // *****
+        List<String> keep_checkedRowData_I = new ArrayList<String>();
 
-            String sectionNumber = func.getElementByID(driver, course, "edu.au.auspark:id/courseSection").getText();
-            Assert.assertTrue(func.stringComparision(sectionNumber,classScheduleList.get(index).getSectionNumber()));  // *****
+        for (int i = 0 ; i < classScheduleList.size(); i++){
+            MobileElement container_schedule = func.getElementByID(driver, "edu.au.auspark:id/ScheduleBlockHolder");
+            List<MobileElement> schedule_courseList = container_schedule.findElements(By.id("edu.au.auspark:id/ScheduleListHeader"));
 
-            String courseTitle = func.getElementByID(driver, course, "edu.au.auspark:id/courseName").getText();
-            Assert.assertTrue(func.stringComparision(courseTitle,classScheduleList.get(index).getCourseName()));  // *****
+            for (int j = 0 ; j < schedule_courseList.size(); j++){
+                String courseCode = func.getElementByID(driver, schedule_courseList.get(j), "edu.au.auspark:id/courseID").getText();
+                String sectionNumber = func.getElementByID(driver, schedule_courseList.get(j), "edu.au.auspark:id/courseSection").getText();
+                String courseTitle = func.getElementByID(driver, schedule_courseList.get(j), "edu.au.auspark:id/courseName").getText();
+                String remark = func.getElementByID(driver, schedule_courseList.get(j), "edu.au.auspark:id/schedule_block_remark").getText();
 
-            String remark = func.getElementByID(driver, course, "edu.au.auspark:id/schedule_block_remark").getText();
-            Assert.assertTrue(func.stringComparision(remark,classScheduleList.get(index).getRemark()));  // *****
-
-            MobileElement container_sectionClass = course.findElement(By.id("edu.au.auspark:id/ScheduleListDetail"));
-            List<MobileElement> sectionClassList = container_sectionClass.findElements(By.className("android.widget.FrameLayout"));
-
-            int j_index = 0;
-            List<mClassDetails> classDetailsList = classScheduleList.get(index).getClassDetailsList();
-            for (MobileElement sectionClass : sectionClassList){
-                String dayName = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/dayName").getText();
-                Assert.assertTrue(func.stringComparision(dayName,classDetailsList.get(j_index).getDayName()));  // *****
-
-                String time = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/courseTime").getText();
-                Assert.assertTrue(func.stringComparision(time,classDetailsList.get(j_index).getTime()));  // *****
-
-                String room = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/roomCode").getText();
-                Assert.assertTrue(func.stringComparision(room,classDetailsList.get(j_index).getRoomCode()));  // *****
-
-                String instructorName = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/courseInstructor").getText();
-                Assert.assertTrue(func.stringComparision(instructorName,classDetailsList.get(j_index).getInstructorName()));  // *****
-                j_index++;
+                if (!keep_checkedRowData_I.contains(courseCode)){
+                    keep_checkedRowData_I.add(courseCode);
+                    System.out.println(courseCode + ";" + classScheduleList.get(i).getCourseCode());
+                    Assert.assertTrue(func.stringComparision(courseCode,classScheduleList.get(i).getCourseCode()));  // *****
+                    Assert.assertTrue(func.stringComparision(sectionNumber,classScheduleList.get(i).getSectionNumber()));  // *****
+                    Assert.assertTrue(func.stringComparision(courseTitle,classScheduleList.get(i).getCourseName()));  // *****
+                    Assert.assertTrue(func.stringComparision(remark,classScheduleList.get(i).getRemark()));  // *****
+                    break;
+                }
             }
-            index++;
+            func.scrollTopToDown_3(driver);
         }
-
-        String studentID = func.getElementByID(driver, "edu.au.auspark:id/transcript_studentID").getText();
-        Assert.assertTrue(func.stringComparision(studentID,"5611779"));
-
     }
 
     public List<mClassSchedule> getClassDetailsList(){
@@ -95,6 +78,7 @@ public class T4_01_Schedule {
         classScheduleList.add(Get_BG14038());
         classScheduleList.add(Get_BG2001());
         classScheduleList.add(Get_LA4606());
+        classScheduleList.add(Get_MT4201());
         classScheduleList.add(Get_SC4299());
         classScheduleList.add(Get_SC4373());
         classScheduleList.add(Get_SC4374());
@@ -113,7 +97,7 @@ public class T4_01_Schedule {
         //----------------
         List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
         mClassDetails classDetails = new mClassDetails();
-        classDetails.setDayName("FRIDAY (31/03/17 )");
+        classDetails.setDayName("FRIDAY (31/03/17  )");
         classDetails.setTime("12:00 - 15:00");
         classDetails.setRoomCode("SR416");
         classDetails.setInstructorName("A.Ratsame");
@@ -177,6 +161,26 @@ public class T4_01_Schedule {
         classDetails.setTime("11:00 - 12:00");
         classDetails.setRoomCode("SR201");
         classDetails.setInstructorName("PAKORN DAMRONGWATTANAPOKIN");
+        classDetailsList.add(classDetails);
+        //----------------
+        classSchedule.setClassDetailsList(classDetailsList);
+        return classSchedule;
+    }
+
+    public mClassSchedule Get_MT4201(){
+        //----------------
+        mClassSchedule classSchedule = new mClassSchedule();
+        classSchedule.setCourseCode("MT4201");
+        classSchedule.setSectionNumber("541");
+        classSchedule.setCourseName("SOCIAL INTERESTS, GOVERNMENT POLICIES AND TECHNOLOGY");
+        classSchedule.setRemark("REMARK: ");
+        //----------------
+        List<mClassDetails> classDetailsList = new ArrayList<mClassDetails>();
+        mClassDetails classDetails = new mClassDetails();
+        classDetails.setDayName("MONDAY");
+        classDetails.setTime("13:30 - 16:30");
+        classDetails.setRoomCode("VMS0402");
+        classDetails.setInstructorName("TUN TUN AUNG");
         classDetailsList.add(classDetails);
         //----------------
         classSchedule.setClassDetailsList(classDetailsList);
