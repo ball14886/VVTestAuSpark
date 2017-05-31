@@ -41,6 +41,9 @@ public class Functions extends SetupProvider{
     public void scrollTopToDown_3(AppiumDriver driver) throws Exception{
         actionProvider.SwipeVertical(driver,0.9,0.4,0.99,1500);
     }
+    public void scrollTopToDown_4(AppiumDriver driver) throws Exception{
+        actionProvider.SwipeVertical(driver,0.9,0.55,0.99,1500);
+    }
 
     public boolean existsElementByID(AppiumDriver driver, String id) {
         try {

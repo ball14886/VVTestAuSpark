@@ -44,7 +44,7 @@ public class T6_01_Calendar {
         func.getElementByID(driver, "edu.au.auspark:id/item_calendar").click();
         func.threadSleep_2();
 
-        MobileElement container_calendar = func.getElementByID(driver, "edu.au.auspark:id/au_calendar_block_holder");
+        MobileElement container_calendar = func.getElementByID(driver, "edu.au.auspark:id/au_caleุndar_block_holder");
         List<MobileElement> calendarMonthList = container_calendar.findElements(By.className("android.widget.LinearLayout"));
 
         List<mCalendarByMonth> calendarByMonthList = getCalendarByMonthList();
@@ -57,38 +57,34 @@ public class T6_01_Calendar {
             String yearNumber = func.getElementByID(driver, calendarMonth, "edu.au.auspark:id/year").getText();
             Assert.assertTrue(func.stringComparision(calendarByMonthList.get(index).getYearNumber(), yearNumber));
 
-            func.getElementByID(driver, calendarMonth,"edu.au.auspark:id/more_info_btn").click();
+            func.getElementByID(driver, calendarMonth, "edu.au.auspark:id/more_info_btn").click();
             func.threadSleep_2();
 
             MobileElement container_day = func.getElementByID(driver, calendarMonth, "edu.au.auspark:id/au_calendar_detail_block");
             List<MobileElement> dayList = container_day.findElements(By.className("android.widget.LinearLayout"));
 
             List<mCalendar> calendar = calendarByMonthList.get(index).getCalendarList();
-            int j_index = 0;
-            for (MobileElement day : dayList) {
-                String dayNumber = func.getElementByID(driver, day,"edu.au.auspark:id/date_act").getText();
 
-                System.out.println("calendar : " + calendar.get(j_index).getDayNumber());
+            for (int i = 0; i < dayList.size(); i++) {
+
+                String dayNumber = func.getElementByID(driver, dayList.get(i), "edu.au.auspark:id/date_act").getText();
+
+                System.out.println("calendar : " + calendar.get(i).getDayNumber());
                 System.out.println("dayNumber : " + dayNumber);
-                if(calendar.get(j_index).getDayNumber().length() == 1){
-                    Assert.assertTrue(func.stringComparision("0" + calendar.get(j_index).getDayNumber(), dayNumber));
-                }else{
-                    Assert.assertTrue(func.stringComparision(calendar.get(j_index).getDayNumber(), dayNumber));
+
+                if (calendar.get(i).getDayNumber().length() == 1) {
+                    Assert.assertTrue(func.stringComparision("0" + calendar.get(i).getDayNumber(), dayNumber));
+                } else {
+                    Assert.assertTrue(func.stringComparision(calendar.get(i).getDayNumber(), dayNumber));
                 }
 
-//                String colorDot = func.getElementByID(driver, "edu.au.auspark:id/color_dot").getText();
-//                Assert.assertTrue(func.stringComparision(calendar.get(j_index).get, colorDot));
-
-                String dayName = func.getElementByID(driver, day,"edu.au.auspark:id/activity").getText();
-                Assert.assertTrue(func.stringComparision(calendar.get(j_index).getDayName(), dayName));
-                j_index++;
+                String dayName = func.getElementByID(driver, dayList.get(i), "edu.au.auspark:id/activity").getText();
+                Assert.assertTrue(func.stringComparision(calendar.get(i).getDayName(), dayName));
             }
-            index++;
-
         }
     }
 
-    public List<mCalendarByMonth> getCalendarByMonthList(){
+    public List<mCalendarByMonth> getCalendarByMonthList() {
         List<mCalendarByMonth> calendarByMonthList = new ArrayList<mCalendarByMonth>();
 
         mCalendarByMonth calendarByMonth = new mCalendarByMonth();
@@ -109,7 +105,7 @@ public class T6_01_Calendar {
         return calendarByMonthList;
     }
 
-    public List<mCalendar> getCalendarList_May2017(){
+    public List<mCalendar> getCalendarList_May2017() {
         List<mCalendar> calendarList = new ArrayList<mCalendar>();
 
         mCalendar calendar = new mCalendar();
@@ -197,7 +193,7 @@ public class T6_01_Calendar {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }
