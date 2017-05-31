@@ -33,7 +33,7 @@ public class Functions extends SetupProvider{
         actionProvider.SwipeVertical(driver,0.9,0.25,0.99,1500);
     }
     public void scrollTopToDown_1(AppiumDriver driver) throws Exception{
-        actionProvider.SwipeVertical(driver,0.9,0.8,0.99,1500);
+        actionProvider.SwipeVertical(driver,0.9,0.80,0.99,1500);
     }
     public void scrollTopToDown_2(AppiumDriver driver) throws Exception{
         actionProvider.SwipeVertical(driver,0.9,0.65,0.99,1500);
@@ -42,8 +42,16 @@ public class Functions extends SetupProvider{
         actionProvider.SwipeVertical(driver,0.9,0.4,0.99,1500);
     }
     public void scrollTopToDown_4(AppiumDriver driver) throws Exception{
+<<<<<<< HEAD
         actionProvider.SwipeVertical(driver,0.9,0.55,0.99,1500);
     }
+=======
+        actionProvider.SwipeVertical(driver,0.9,0.28,0.99,1500);
+    }
+//    public void scrollTop_ScreenOne(AppiumDriver driver) throws Exception{
+//        actionProvider.SwipeVertical(driver,0.25,0.9,0.99,1500);
+//    }
+>>>>>>> d98ee8ab1c5c667d244fcf44fc4be35a03f68d45
 
     public boolean existsElementByID(AppiumDriver driver, String id) {
         try {
@@ -125,9 +133,22 @@ public class Functions extends SetupProvider{
             return element.findElement(By.id(id));
         }
         else {
-            ScrollToTargetValue_ElementByID(driver, element, id);
+            MobileElement a = new MobileElement() {
+                @Override
+                public void sendKeys(CharSequence... keysToSend) {
+                    super.sendKeys(keysToSend);
+                }
+
+                @Override
+                public String getText() {
+                    return super.getText();
+                }
+            };
+            a.sendKeys("");
+            return a;
+            //ScrollToTargetValue_ElementByID(driver, element, id);
         }
-        return null;
+       //return null;
     }
 
     public void ScrollToTargetValue_ElementByID(AppiumDriver driver, String id) throws Exception {
