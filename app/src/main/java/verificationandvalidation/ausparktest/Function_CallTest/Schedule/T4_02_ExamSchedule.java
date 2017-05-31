@@ -89,69 +89,65 @@ public class T4_02_ExamSchedule {
                             Assert.assertTrue(func.stringComparision(room, classExamList.get(i).getExamDetailsList().get(k).getExamRoom()));  // *****
                         }
                     }
-
+                    break;
                 }
             }
             func.scrollTopToDown_2(driver);
         }
 
         //---------------------------------------------------------------------------
+        func.SwipeMenuSidebarDownToTop(driver);
+        func.threadSleep_2();
+
+        func.getElementByID(driver, "edu.au.auspark:id/fin").click();
+        func.threadSleep_1();
 
 
-//        int index = 0;
-//        for (MobileElement course : examSchedule_courseList){
-//
-//            MobileElement container_sectionClass = course.findElement(By.id("edu.au.auspark:id/examListDetail"));
-//            List<MobileElement> sectionClassList = container_sectionClass.findElements(By.className("android.widget.LinearLayout"));
-//
-//            int j_index = 0;
-//            List<mClassExamDetails> classExamDetailsList = classExamList.get(index).getExamDetailsList();
-//            for (MobileElement sectionClass : sectionClassList){
-//
-//
-//            }
-//            index++;
-//        }
-//
-//        //---------------------------------------------------------------------------
-//
-//        func.getElementByID(driver, "edu.au.auspark:id/fin").click();
-//        func.threadSleep_1();
-//
-//        MobileElement container_final = func.getElementByID(driver, "edu.au.auspark:id/examFinalLayout");
-//
-//        container_examSchedule = func.getElementByID(driver, container_final,"edu.au.auspark:id/ExamBlockHolderFinal");
-//        examSchedule_courseList = container_examSchedule.findElements(By.className("android.widget.LinearLayout"));
-//
-//        index = 0;
-//        for (MobileElement course : examSchedule_courseList){
-//            String examDate = func.getElementByID(driver, course, "edu.au.auspark:id/examDate").getText();
-//            Assert.assertTrue(func.stringComparision(examDate,classExamList.get(index).getDayNumber()));  // *****
-//
-//            String examDayName = func.getElementByID(driver, course, "edu.au.auspark:id/examDayName").getText();
-//            Assert.assertTrue(func.stringComparision(examDayName, classExamList.get(index).getDayName()));  // *****
-//
-//            MobileElement container_sectionClass = course.findElement(By.id("edu.au.auspark:id/examListDetail"));
-//            List<MobileElement> sectionClassList = container_sectionClass.findElements(By.className("android.widget.LinearLayout"));
-//
-//            int j_index = 0;
-//            List<mClassExamDetails> classExamDetailsList = classExamList.get(index).getExamDetailsList();
-//            for (MobileElement sectionClass : sectionClassList){
-//                String startTime = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/startTime").getText();
-//                Assert.assertTrue(func.stringComparision(startTime, classExamDetailsList.get(j_index).getStartTime()));  // *****
-//
-//                String endTime = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/endTime").getText();
-//                Assert.assertTrue(func.stringComparision(endTime, classExamDetailsList.get(j_index).getEndTime()));  // *****
-//
-//                String courseTitle = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/subject").getText();
-//                Assert.assertTrue(func.stringComparision(courseTitle, classExamDetailsList.get(j_index).getCourseName()));  // *****
-//
-//                String room = func.getElementByID(driver, sectionClass, "edu.au.auspark:id/room").getText();
-//                Assert.assertTrue(func.stringComparision(room, classExamDetailsList.get(j_index).getExamRoom()));  // *****
-//            }
-//            index++;
-//        }
+        classExamList = getFinalExamList();
 
+        keep_checkedRowData_1 = new ArrayList<String>();
+        keep_checkedRowData_2 = new ArrayList<String>();
+
+        for(int i = 0 ; i < classExamList.size(); i++){
+            MobileElement container_final = func.getElementByID(driver, "edu.au.auspark:id/examFinalLayout");
+            MobileElement container_examSchedule = func.getElementByID(driver,container_final ,"edu.au.auspark:id/ExamBlockHolderFinal");
+            List<MobileElement> examSchedule_Header_courseList = container_examSchedule.findElements(By.id("edu.au.auspark:id/ExamListHeader"));
+            List<MobileElement> examSchedule_Bottom_courseList = container_examSchedule.findElements(By.id("edu.au.auspark:id/examListDetail"));
+
+            for (int j = 0 ; j < examSchedule_Header_courseList.size(); j++){
+                String examDate = func.getElementByID(driver, examSchedule_Header_courseList.get(j), "edu.au.auspark:id/examDate").getText();
+                String examDayName = func.getElementByID(driver, examSchedule_Header_courseList.get(j), "edu.au.auspark:id/examDayName").getText();
+
+                if (!keep_checkedRowData_1.contains(examDate+";"+examDayName)){
+                    keep_checkedRowData_1.add(examDate+";"+examDayName);
+                    Assert.assertTrue(func.stringComparision(examDate,classExamList.get(i).getDayNumber()));  // *****
+                    Assert.assertTrue(func.stringComparision(examDayName, classExamList.get(i).getDayName()));  // *****
+                    break;
+                }
+
+
+            }
+            for (int j = 0 ; j < examSchedule_Bottom_courseList.size(); j++){
+                String startTime = func.getElementByID(driver, examSchedule_Bottom_courseList.get(j), "edu.au.auspark:id/startTime").getText();
+                String endTime = func.getElementByID(driver, examSchedule_Bottom_courseList.get(j), "edu.au.auspark:id/endTime").getText();
+                String courseTitle = func.getElementByID(driver, examSchedule_Bottom_courseList.get(j), "edu.au.auspark:id/subject").getText();
+                //String room = func.getElementByID(driver, examSchedule_Bottom_courseList.get(j), "edu.au.auspark:id/room").getText();
+
+                if (!keep_checkedRowData_2.contains(courseTitle)){
+                    keep_checkedRowData_2.add(courseTitle);
+                    for (int k = 0 ; k < classExamList.get(i).getExamDetailsList().size(); k++){
+                        if (func.stringComparision(classExamList.get(i).getExamDetailsList().get(k).getCourseName(), courseTitle)){
+                            Assert.assertTrue(func.stringComparision(startTime, classExamList.get(i).getExamDetailsList().get(k).getStartTime()));  // *****
+                            Assert.assertTrue(func.stringComparision(endTime, classExamList.get(i).getExamDetailsList().get(k).getEndTime()));  // *****
+                            Assert.assertTrue(func.stringComparision(courseTitle, classExamList.get(i).getExamDetailsList().get(k).getCourseName()));  // *****
+                            //Assert.assertTrue(func.stringComparision(room, classExamList.get(i).getExamDetailsList().get(k).getExamRoom()));  // *****
+                        }
+                    }
+                    break;
+                }
+            }
+            func.scrollTopToDown_3(driver);
+        }
     }
 
     public List<mClassExam> getMidtermExamList(){
@@ -284,7 +280,7 @@ public class T4_02_ExamSchedule {
         classExamDetails.setStartTime("13:00");
         classExamDetails.setEndTime("16:00");
         classExamDetails.setCourseName("SOCIAL INTERESTS, GOVERNMENT POLICIES AND TECHNOLOGY");
-        classExamDetails.setExamRoom("SR305");
+        classExamDetails.setExamRoom("SR307");
 
         classExamDetailsList.add(classExamDetails);
         classExam.setExamDetailsList(classExamDetailsList);
